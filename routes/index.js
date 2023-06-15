@@ -7,4 +7,13 @@ router.get("/health", (req, res, next) => {
   });
 });
 
+router.use("/auth", require("./auth"));
+
+router.all("*", (req, res, next) => {
+  next({
+    name: "Not found",
+    message: "That endpoint does not exists",
+  });
+});
+
 module.exports = router;
