@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Button } from "@mui/material";
 
 function App() {
   const [healthMsg, setHealthMsg] = useState(null);
@@ -26,6 +27,7 @@ function App() {
   return (
     <div>
       <h1>Welcome to Grace Shopper</h1>
+      <Button variant="contained">Hello World</Button>
       {healthMsg && <p>{healthMsg}</p>}
       {err && <p>{err}</p>}
     </div>
