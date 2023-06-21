@@ -8,7 +8,15 @@ const users = [
 	{ username: "Collin", password: 1234567892 },
 ];
 
-const products = [];
+const products = [
+	{
+		id: 1,
+		name: "chew toy",
+		description: "made of rubber, squeeks",
+		price: 5,
+		stock: 50,
+	},
+];
 
 // const productCategories = [{ name: "food" }, { name: "toys" }];
 
