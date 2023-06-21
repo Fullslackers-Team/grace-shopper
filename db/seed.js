@@ -1,5 +1,7 @@
 const { createOrders } = require("./adatapters/orders");
+const { createUser } = require("./adatapters/users");
 const client = require("./client");
+const { users, orders } = require("./seedData");
 
 async function dropTables() {
 	console.log("Dropping tables...");
@@ -36,7 +38,7 @@ async function createTables() {
 		await client.query(`CREATE TABLE orders (
         id SERIAL PRIMARY KEY,
         creator_id INTEGER NOT NULL,
-        status VARCHAR(255) UNIQUE NOT NULL
+        status VARCHAR(255) NOT NULL
       );`);
 
 		await client.query(`CREATE TABLE order_items (
@@ -53,21 +55,21 @@ async function populateTables() {
 	console.log("Populating tables...");
 	try {
 		for (const user of users) {
-			await createUser(user);
+			await createUser(user.username, user.password);
 			console.log("users table populated");
 		}
-		for (const product of products) {
-			await createProduct(product);
-			console.log("products table populated");
-		}
+		// for (const product of products) {
+		// 	await createProduct(product);
+		// 	console.log("products table populated");
+		// }
 		for (const order of orders) {
-			await createOrders(order);
+			await createOrders(order.creator_id, order.status);
 			console.log("order table populated");
 		}
-		for (const order_item of order_items) {
-			await createOrder_items(order_item);
-			console.log("order_items table populated");
-		}
+		// for (const order_item of order_items) {
+		// 	await createOrder_items(order_item);
+		// 	console.log("order_items table populated");
+		// }
 	} catch (error) {
 		console.error(error);
 	}
