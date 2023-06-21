@@ -59,6 +59,7 @@ async function populateTables() {
 async function rebuildDb() {
 	client.connect();
 	try {
+		console.log("testing github");
 		console.log("Dropping Tables...");
 		await dropTables();
 		console.log("Tables Dropped");
