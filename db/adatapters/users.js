@@ -3,8 +3,6 @@ const client = require("../client");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-// MORE STUFF AND THINGS
-
 async function createUser(username, password) {
   try {
     const hashedPassword = bcrypt.hashSync(password, saltRounds);
