@@ -1,3 +1,4 @@
+const { createOrders } = require("./adatapters/orders");
 const client = require("./client");
 
 async function dropTables() {
@@ -51,6 +52,22 @@ async function createTables() {
 async function populateTables() {
 	console.log("Populating tables...");
 	try {
+		for (const user of users) {
+			await createUser(user);
+			console.log("users table populated");
+		}
+		for (const product of products) {
+			await createProduct(product);
+			console.log("products table populated");
+		}
+		for (const order of orders) {
+			await createOrders(order);
+			console.log("order table populated");
+		}
+		for (const order_item of order_items) {
+			await createOrder_items(order_item);
+			console.log("categorythrough table populated");
+		}
 	} catch (error) {
 		console.error(error);
 	}
