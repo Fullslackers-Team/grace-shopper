@@ -8,12 +8,25 @@ const users = [
 	{ username: "Collin", password: 1234567892 },
 ];
 
-const products = [];
+const products = [
+	{
+		id: 1,
+		name: "chew toy",
+		description: "made of rubber, squeeks",
+		price: 5,
+		stock: 50,
+	},
+];
 
 // const productCategories = [{ name: "food" }, { name: "toys" }];
 
 // const petTypes = [];
 
-const orders = [];
+const orders = [
+	{ id: 1, creator_id: 1, status: "shipped" },
+	{ id: 2, creator_id: 2, status: "complete" },
+	{ id: 3, creator_id: 3, status: "in_cart" },
+	{ id: 4, creator_id: 4, status: "complete" },
+];
 
 const orderItems = [];
