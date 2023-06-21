@@ -66,7 +66,7 @@ async function populateTables() {
 		}
 		for (const order_item of order_items) {
 			await createOrder_items(order_item);
-			console.log("categorythrough table populated");
+			console.log("order_items table populated");
 		}
 	} catch (error) {
 		console.error(error);
