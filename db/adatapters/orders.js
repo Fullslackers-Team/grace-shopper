@@ -1,6 +1,6 @@
 const client = require("../client");
 
-async function createOrders({ creator_id, status }) {
+async function createOrders(creator_id, status) {
 	try {
 		const {
 			rows: [orders],
