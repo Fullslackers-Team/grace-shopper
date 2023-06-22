@@ -3,6 +3,7 @@ const {
 	createOrder,
 	editOrder,
 	destroyOrder,
+	getOrderbyCreatorId,
 } = require("../db/adapters/orders");
 const { authRequired } = require("./utils");
 
@@ -46,6 +47,16 @@ ordersRouter.patch("/:id", authRequired, async (req, res, next) => {
 		} else {
 			res.send("Order couldn't be found");
 		}
+	} catch (error) {
+		next(error);
+	}
+});
+
+prdersRouter.get("/:creator_id/routes", async (req, res, next) => {
+	try {
+		const { creator_id } = req.params.activityId;
+		const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
+		res.send(orderbyCreatorId);
 	} catch (error) {
 		next(error);
 	}

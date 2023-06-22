@@ -1,6 +1,6 @@
 const client = require("../client");
 
-async function createOrders(creator_id, status) {
+async function createOrder(creator_id, status) {
 	try {
 		const {
 			rows: [orders],
@@ -50,4 +50,21 @@ async function destroyOrder(id, status) {
 	}
 }
 
-module.exports = { createOrders, editOrder, destroyOrder };
+async function getOrderbyCreatorId(creator_id, status) {
+	try {
+		const {
+			rows: [order],
+		} = await client.query(
+			`
+    SELECT * FROM orders
+    WHERE id=${creator_id};
+  `,
+			[creator_id, status]
+		);
+		return order;
+	} catch (error) {
+		throw error;
+	}
+}
+
+module.exports = { createOrder, editOrder, destroyOrder, getOrderbyCreatorId };
