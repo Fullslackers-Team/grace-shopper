@@ -37,9 +37,34 @@ async function updateProduct(name, price, description, stock, id) {
   }
 }
 
-async function getAllProducts() {}
+async function getAllProducts() {
+  try {
+    const { rows } = await client.query(
+      `
+            SELECT *
+            FROM products
+            `
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
-async function getProductById(id) {}
+async function getProductById(id) {
+  try {
+    const { rows } = await client.query(
+      `
+          SELECT * FROM products
+          WHERE id=$1
+          `,
+      [id]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 
 async function destroyProduct(id) {
   const { rows } = await client.query(
