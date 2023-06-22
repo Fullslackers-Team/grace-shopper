@@ -36,4 +36,14 @@ async function editOrder(id, status) {
 	}
 }
 
-module.exports = { createOrders, editOrder };
+async function destroyOrder(id, status) {
+	await client.query(
+		`DELETE from orders
+          WHERE id = $1
+          `,
+		[id, status]
+	);
+	return;
+}
+
+module.exports = { createOrders, editOrder, destroyOrder };
