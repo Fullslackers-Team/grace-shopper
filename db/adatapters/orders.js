@@ -37,13 +37,19 @@ async function editOrder(id, status) {
 }
 
 async function destroyOrder(id, status) {
-	await client.query(
-		`DELETE from orders
+	try {
+		const {
+			rows: [destroyedOrder],
+		} = await client.query(
+			`DELETE from orders
           WHERE id = $1
           `,
-		[id, status]
-	);
-	return;
+			[id, status]
+		);
+		return destroyedOrder;
+	} catch (error) {
+		throw error;
+	}
 }
 
 module.exports = { createOrders, editOrder, destroyOrder };
