@@ -18,4 +18,22 @@ async function createOrders(creator_id, status) {
 	}
 }
 
-module.exports = { createOrders };
+async function editOrder(id, status) {
+	try {
+		const {
+			rows: [editedOrder],
+		} = await client.query(
+			`
+			UPDATE orders
+      		SET  status = $2
+      		WHERE  id = $1
+      		RETURNING *;`,
+			[id, status]
+		);
+		return editedOrder;
+	} catch (error) {
+		throw error;
+	}
+}
+
+module.exports = { createOrders, editOrder };
