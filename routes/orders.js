@@ -54,7 +54,7 @@ ordersRouter.patch("/:id", authRequired, async (req, res, next) => {
 
 ordersRouter.get("/:creator_id/routes", async (req, res, next) => {
 	try {
-		const { creator_id } = req.params.activityId;
+		const { creator_id } = req.params.creator_id;
 		const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
 		res.send(orderbyCreatorId);
 	} catch (error) {
