@@ -52,7 +52,7 @@ ordersRouter.patch("/:id", authRequired, async (req, res, next) => {
 	}
 });
 
-prdersRouter.get("/:creator_id/routes", async (req, res, next) => {
+ordersRouter.get("/:creator_id/routes", async (req, res, next) => {
 	try {
 		const { creator_id } = req.params.activityId;
 		const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
