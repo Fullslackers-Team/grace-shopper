@@ -1,37 +1,22 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import { Button } from "@mui/material";
+import Navbar from "./components/Navbar/Navbar";
+import Footer from "./components/Footer/Footer";
+import { Route, Routes } from "react-router-dom";
+import Landing from "./pages/Landing/Landing";
+import AllProducts from "./pages/AllProducts/AllProducts";
+import Product from "./pages/Product/Product";
 
-function App() {
-  const [healthMsg, setHealthMsg] = useState(null);
-  const [err, setErr] = useState(null);
-
-  useEffect(() => {
-    async function checkHealth() {
-      try {
-        const response = await fetch("/api/health");
-        if (!response.ok) {
-          throw {
-            message: "Api is Down 😭",
-          };
-        }
-        const { message } = await response.json();
-        setHealthMsg(message);
-      } catch (error) {
-        setErr(error.message);
-      }
-    }
-    checkHealth();
-  }, []);
-
+export default function App() {
   return (
     <div>
-      <h1>Welcome to Grace Shopper</h1>
-      <Button variant="contained">Hello World</Button>
-      {healthMsg && <p>{healthMsg}</p>}
-      {err && <p>{err}</p>}
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/products" element={<AllProducts />} />
+        <Route path="/products/:id" element={<Product />} />
+      </Routes>
+      <Footer />
     </div>
   );
 }
-
-export default App;
