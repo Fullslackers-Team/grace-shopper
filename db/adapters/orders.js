@@ -6,10 +6,10 @@ async function createOrder(creator_id, status) {
       rows: [orders],
     } = await client.query(
       `
-            INSERT INTO orders(creator_id, status)
-            VALUES($1,$2)
-            RETURNING *;
-            `,
+      INSERT INTO orders(creator_id, status)
+      VALUES($1,$2)
+      RETURNING *;
+      `,
       [creator_id, status]
     );
     return orders;
@@ -25,9 +25,10 @@ async function editOrder(id, status) {
     } = await client.query(
       `
 			UPDATE orders
-      		SET  status = $2
-      		WHERE  id = $1
-      		RETURNING *;`,
+      SET  status = $2
+      WHERE  id = $1
+      RETURNING *;
+      `,
       [id, status]
     );
     return editedOrder;
@@ -36,30 +37,34 @@ async function editOrder(id, status) {
   }
 }
 
-async function destroyOrder(id, status) {
+async function destroyOrder(id) {
   try {
-    await client.query(
-      `DELETE from orders
-          WHERE id = $1;
-          `,
-      [id, status]
+    const { rows } = await client.query(
+      `
+      DELETE from orders
+      WHERE id = $1
+      RETURNING *;
+
+      `,
+      [id]
     );
+    console.log(rows);
     return true;
   } catch (error) {
     throw error;
   }
 }
 
-async function getOrderbyCreatorId(creator_id, status) {
+async function getOrderbyCreatorId(creator_id) {
   try {
     const {
       rows: [order],
     } = await client.query(
       `
-    		SELECT * FROM orders
-    		WHERE id=${creator_id};
-  			`,
-      [creator_id, status]
+    	SELECT * FROM orders
+    	WHERE id=$1;
+  		`,
+      [creator_id]
     );
     return order;
   } catch (error) {

@@ -8,6 +8,7 @@ router.get("/health", (req, res, next) => {
 });
 
 router.use("/auth", require("./auth.js"));
+router.use("/users", require("./users.js"));
 router.use("/orders", require("./orders.js"));
 router.use("/order-items", require("./orderItems.js"));
 router.use("/products", require("./products.js"));

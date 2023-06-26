@@ -1,12 +1,12 @@
 const express = require("express");
-const { addItemToOrder, removeItemFromOrder, removeAllItemsFromOrder } = require("../db/adapters/orderItems");
 const router = express.Router();
+const { addItemToOrder, removeItemFromOrder, removeAllItemsFromOrder, getAllItemsFromOrder } = require("../db/adapters/orderItems");
 
-// addItemToOrder, removeItemFromOrder, removeAllItemsFromOrder
-
-router.get("/", async (req, res, next) => {
+router.get("/:orderId", async (req, res, next) => {
   try {
-    res.send({ succes: true, name: "Success", message: "Added product to order" });
+    const { orderId } = req.params;
+    const orderItems = await getAllItemsFromOrder(orderId);
+    res.send({ succes: true, name: "Success", message: "Successfully retrieved items in order", data: orderItems });
   } catch (error) {
     next(error);
   }
@@ -22,7 +22,7 @@ router.post("/:orderId/:productId", async (req, res, next) => {
   }
 });
 
-router.delete("/:orderId/:productId", async (req, res, next) => {
+router.delete("/item/:orderId/:productId", async (req, res, next) => {
   try {
     const { orderId, productId } = req.params;
     await removeItemFromOrder(orderId, productId);

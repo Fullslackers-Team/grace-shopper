@@ -1,65 +1,58 @@
 const ordersRouter = require("express").Router();
-const {
-	createOrder,
-	editOrder,
-	destroyOrder,
-	getOrderbyCreatorId,
-} = require("../db/adapters/orders");
 const { authRequired } = require("./utils");
+const { createOrder, editOrder, destroyOrder, getOrderbyCreatorId } = require("../db/adapters/orders");
 
 ordersRouter.post("/", async (req, res, next) => {
-	try {
-		const { creator_id, status } = req.body;
-		const createdOrder = await createOrder({
-			creator_id,
-			status,
-		});
-		res.send(createdOrder);
-	} catch (error) {
-		next(error);
-	}
+  try {
+    const { creator_id, status } = req.body;
+    const createdOrder = await createOrder(creator_id, status);
+    res.send({ success: true, message: "Successfully created order.", data: createdOrder });
+  } catch (error) {
+    next(error);
+  }
 });
-
-// attach routes later
 
 ordersRouter.delete("/:orderId", authRequired, async (req, res, next) => {
-	try {
-		const { orderId } = req.params;
-		if ((req.order.id = orderId.creator_id)) {
-			const order = await destroyOrder(id);
-			res.send(order);
-		} else {
-			next({ message: "You are not authorized to delete this order." });
-		}
-	} catch (error) {
-		next(error);
-	}
+  try {
+    const { orderId } = req.params;
+    const order = await destroyOrder(orderId);
+    if (!order.length) {
+      next({
+        name: "NotFound",
+        message: "An order with that id does not exist.",
+      });
+    } else {
+      res.send({ success: true, message: "Successfully deleted order.", data: order });
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
-ordersRouter.patch("/:id", authRequired, async (req, res, next) => {
-	const { id } = req.params;
-	const { creator_id, status } = req.body;
-	try {
-		const order = await getOrderbyId(+id);
-		if (+req.order.id === order.creator_id) {
-			const editedOrder = await editOrder(+id, creator_id, status);
-			res.send(editedOrder);
-		} else {
-			res.send("Order couldn't be found");
-		}
-	} catch (error) {
-		next(error);
-	}
+ordersRouter.patch("/", authRequired, async (req, res, next) => {
+  const { creator_id, status } = req.body;
+  try {
+    const order = await getOrderbyCreatorId(creator_id);
+    if (order) {
+      const editedOrder = await editOrder(creator_id, status);
+      res.send({ success: true, message: "Successfully updated order.", data: editedOrder });
+    } else {
+      res.send("You have not created an order yet.");
+    }
+  } catch (error) {
+    next(error);
+  }
 });
 
-ordersRouter.get("/:creator_id/routes", async (req, res, next) => {
-	try {
-		const { creator_id } = req.params.creator_id;
-		const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
-		res.send(orderbyCreatorId);
-	} catch (error) {
-		next(error);
-	}
+ordersRouter.get("/:creator_id", async (req, res, next) => {
+  try {
+    const { creator_id } = req.params;
+    const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
+    console.log(orderbyCreatorId);
+    res.send({ success: true, message: "Successfully fetched order.", data: orderbyCreatorId });
+  } catch (error) {
+    next(error);
+  }
 });
 
 module.exports = ordersRouter;

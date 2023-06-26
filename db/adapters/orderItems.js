@@ -1,5 +1,19 @@
 const client = require("../client");
 
+async function getAllItemsFromOrder(order_id) {
+  try {
+    const { rows } = await client.query(
+      `
+        SELECT * FROM order_items
+        WHERE order_id=$1;
+      `,
+      [order_id]
+    );
+    return rows;
+  } catch (error) {
+    throw error;
+  }
+}
 async function addItemToOrder(order_id, product_id) {
   try {
     const {
@@ -20,19 +34,13 @@ async function addItemToOrder(order_id, product_id) {
 
 async function removeItemFromOrder(order_id, product_id) {
   try {
-    const resp = await client.query(
+    await client.query(
       `
-      SELECT * FROM order_items;
-      `
+      DELETE FROM order_items
+      WHERE order_id = $1 AND product_id = $2;
+      `,
+      [order_id, product_id]
     );
-    console.log(resp);
-    // const resp = await client.query(
-    //   `
-    //   DELETE FROM order_items
-    //   WHERE order_id = $1 AND product_id = $2;
-    //   `,
-    //   [order_id, product_id]
-    // );
     return true;
   } catch (error) {
     throw error;
@@ -41,7 +49,7 @@ async function removeItemFromOrder(order_id, product_id) {
 
 async function removeAllItemsFromOrder(order_id) {
   try {
-    const resp = await client.query(
+    await client.query(
       `
         DELETE FROM order_items
         WHERE order_id = $1;
@@ -54,4 +62,4 @@ async function removeAllItemsFromOrder(order_id) {
   }
 }
 
-module.exports = { addItemToOrder, removeItemFromOrder, removeAllItemsFromOrder };
+module.exports = { getAllItemsFromOrder, addItemToOrder, removeItemFromOrder, removeAllItemsFromOrder };
