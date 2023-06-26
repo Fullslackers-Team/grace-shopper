@@ -7,7 +7,7 @@ productsRouter.post("/", async (req, res, next) => {
   try {
     const { name, price, description, stock } = req.body;
     const createdProduct = await createProduct(name, price, description, stock);
-    res.send(createdProduct);
+    res.send({ success: true, message: "Successfully created product.", data: createdProduct });
   } catch (error) {
     next(error);
   }
@@ -17,12 +17,15 @@ productsRouter.patch("/:id", authRequired, async (req, res, next) => {
   const { id } = req.params;
   const { name, price, description, stock } = req.body;
   try {
-    const order = await getProductById(+id);
-    if (req.products.id === order.id) {
+    const order = await getProductById(id);
+    if (order.length) {
       const updatedProduct = await updateProduct(name, price, description, stock, id);
-      res.send(updatedProduct);
+      res.send({ success: true, message: "Successfully updated product.", data: updatedProduct });
     } else {
-      res.send("Update unsuccessful");
+      next({
+        name: "NotFound",
+        message: "A product with that id does not exist.",
+      });
     }
   } catch (error) {
     next(error);
@@ -31,8 +34,8 @@ productsRouter.patch("/:id", authRequired, async (req, res, next) => {
 
 productsRouter.get("/", async (req, res, next) => {
   try {
-    const users = await getAllProducts();
-    res.send(users);
+    const products = await getAllProducts();
+    res.send({ success: true, message: "Successfully fetched products.", data: products });
   } catch (error) {
     next(error);
   }
@@ -41,12 +44,15 @@ productsRouter.get("/", async (req, res, next) => {
 productsRouter.delete("/:id", authRequired, async (req, res, next) => {
   try {
     const { id } = req.params;
-    const order = await getProductById(id);
-    if (id === order.id) {
+    const product = await getProductById(id);
+    if (product.length) {
       const order = await destroyProduct(id);
-      res.send(order);
+      res.send({ success: true, message: "Successfully deleted product.", data: null });
     } else {
-      next({ message: "Delete unsuccessful" });
+      next({
+        name: "NotFound",
+        message: "A product with that id does not exist.",
+      });
     }
   } catch (error) {
     next(error);
