@@ -48,7 +48,6 @@ ordersRouter.get("/:creator_id", async (req, res, next) => {
   try {
     const { creator_id } = req.params;
     const orderbyCreatorId = await getOrderbyCreatorId(creator_id);
-    console.log(orderbyCreatorId);
     res.send({ success: true, message: "Successfully fetched order.", data: orderbyCreatorId });
   } catch (error) {
     next(error);

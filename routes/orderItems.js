@@ -22,7 +22,7 @@ router.post("/:orderId/:productId", async (req, res, next) => {
   }
 });
 
-router.delete("/item/:orderId/:productId", async (req, res, next) => {
+router.delete("/product/:orderId/:productId", async (req, res, next) => {
   try {
     const { orderId, productId } = req.params;
     await removeItemFromOrder(orderId, productId);
