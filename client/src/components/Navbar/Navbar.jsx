@@ -1,5 +1,5 @@
 import "./index.css";
 
-export default function Footer() {
+export default function Navbar() {
   return <div></div>;
 }
