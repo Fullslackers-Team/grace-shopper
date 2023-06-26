@@ -27,7 +27,7 @@ async function updateProduct(name, price, description, stock, id) {
       `
         UPDATE products
         SET name = $2, price = $3, description = $4, stock = $5 
-        WHERE  id = $1
+        WHERE  id = $1;
        `,
       [name, price, description, stock, id]
     );
@@ -42,7 +42,7 @@ async function getAllProducts() {
     const { rows } = await client.query(
       `
             SELECT *
-            FROM products
+            FROM products;
             `
     );
     return rows;
@@ -56,7 +56,7 @@ async function getProductById(id) {
     const { rows } = await client.query(
       `
           SELECT * FROM products
-          WHERE id=$1
+          WHERE id=$1;
           `,
       [id]
     );
@@ -71,7 +71,7 @@ async function destroyProduct(id) {
     await client.query(
       `
         DELETE FROM products
-        WHERE id= $1
+        WHERE id= $1;
         `,
       [id]
     );

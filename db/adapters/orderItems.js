@@ -20,13 +20,19 @@ async function addItemToOrder(order_id, product_id) {
 
 async function removeItemFromOrder(order_id, product_id) {
   try {
-    await client.query(
+    const resp = await client.query(
       `
-        DELETE from order_items
-        WHERE order_id = $1 AND product_id = $2;
-      `,
-      [order_id, product_id]
+      SELECT * FROM order_items;
+      `
     );
+    console.log(resp);
+    // const resp = await client.query(
+    //   `
+    //   DELETE FROM order_items
+    //   WHERE order_id = $1 AND product_id = $2;
+    //   `,
+    //   [order_id, product_id]
+    // );
     return true;
   } catch (error) {
     throw error;
@@ -35,10 +41,10 @@ async function removeItemFromOrder(order_id, product_id) {
 
 async function removeAllItemsFromOrder(order_id) {
   try {
-    await client.query(
+    const resp = await client.query(
       `
         DELETE FROM order_items
-        WHERE order_id = $1
+        WHERE order_id = $1;
       `,
       [order_id]
     );
