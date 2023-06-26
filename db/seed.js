@@ -1,15 +1,15 @@
-const { removeAllItemsFromOrder, addItemToOrder } = require("./adapters/orderItems");
-const { createOrders } = require("./adapters/orders");
-const { createProduct } = require("./adapters/products");
-const { createUser } = require("./adapters/users");
 const client = require("./client");
 const { users, orders, products, orderItems } = require("./seedData");
+const { addItemToOrder } = require("./adapters/orderItems");
+const { createOrder } = require("./adapters/orders");
+const { createProduct } = require("./adapters/products");
+const { createUser } = require("./adapters/users");
 
 async function dropTables() {
   try {
     await client.query(
       `
-	  DROP TABLE IF EXISTS users;
+	    DROP TABLE IF EXISTS users;
       DROP TABLE IF EXISTS products; 
       DROP TABLE IF EXISTS orders;
       DROP TABLE IF EXISTS order_items;
@@ -63,7 +63,7 @@ async function populateTables() {
       await createProduct(product.name, product.price, product.description, product.stock);
     }
     for (const order of orders) {
-      await createOrders(order.creator_id, order.status);
+      await createOrder(order.creator_id, order.status);
     }
     for (const order_item of orderItems) {
       await addItemToOrder(order_item.order_id, order_item.product_id);
