@@ -3,6 +3,8 @@ import "./TopSellers.css"
 
 export default function TopSellers() {
 	return <div className="topSellers">
+
+		<div className="topSellersContent">
 		<h2>TOP SELLERS!</h2>
 			<ul className="topSellersList">
 				<li>
@@ -23,5 +25,10 @@ export default function TopSellers() {
 				</li>
 		</ul>
 		<Link to="/products"><button>SHOP NOW!</button></Link>
+		</div>
+
+		<div className="topSellersImage">
+		<img style={{maxWidth: "350px"}} src="https://wallpapers.com/images/featured/funny-dog-hwpxok1ured4qh98.jpg"/>
+		</div>
 	</div>;
 }
