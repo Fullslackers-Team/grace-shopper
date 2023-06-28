@@ -1,4 +1,4 @@
-export const getOrders = async () => {
+export async function getOrders() {
 	try {
 		const response = await fetch(`api/orders`);
 		const result = await response.json();
@@ -8,7 +8,7 @@ export const getOrders = async () => {
 		console.error(error);
 	}
 	getOrders();
-};
+}
 
 export async function createOrder(creator_id, status) {
 	try {
@@ -48,7 +48,7 @@ export async function editOrder(creator_id, status) {
 	}
 }
 
-export const deleteOrder = async () => {
+export async function deleteOrder() {
 	try {
 		const response = await fetch(`api/orders`, {
 			method: "DELETE",
@@ -63,4 +63,4 @@ export const deleteOrder = async () => {
 		console.error(error);
 	}
 	deleteOrder();
-};
+}

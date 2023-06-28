@@ -1,3 +1,33 @@
+export default async function getProduct(id) {
+    try {
+      const resp = await fetch(`/api/products/${id}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await resp.json();
+      return result.data;
+    } catch (error) {
+      console.error(error);
+    }
+}
+
+export default async function getAllProducts() {
+    try {
+      const resp = await fetch(`/api/products`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const result = await resp.json();
+      return result.data;
+    } catch (error) {
+      console.error(error);
+    }
+}
+
 export default async function createProduct(id) {
     try {
       const resp = await fetch(`/api/products/${id}`, {
@@ -11,9 +41,9 @@ export default async function createProduct(id) {
     } catch (error) {
       console.error(error);
     }
-  }
-  
-  export default async function updateProduct(id) {
+}
+
+export default async function updateProduct(id) {
     try {
       const resp = await fetch(`/api/products/${id}`, {
         method: "PATCH",
@@ -26,24 +56,9 @@ export default async function createProduct(id) {
     } catch (error) {
       console.error(error);
     }
-  }
+}
   
-  export default async function getAllProducts(id) {
-    try {
-      const resp = await fetch(`/api/products/${id}`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const result = await resp.json();
-      return result.data;
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  
-  export default async function destroyProduct(id) {
+export default async function destroyProduct(id) {
     try {
       const resp = await fetch(`/api/products/${id}`, {
         method: "DELETE",
@@ -56,5 +71,5 @@ export default async function createProduct(id) {
     } catch (error) {
       console.error(error);
     }
-  }
+}
   
