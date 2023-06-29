@@ -1,0 +1,7 @@
+.navlinks {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	float: right;
+	margin-right: 20px;
+}
