@@ -1,0 +1,54 @@
+.featured-pets-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.featured-pets-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
+	max-width: calc(960px + 3rem);
+}
+
+.featured-pet-card {
+	position: relative;
+	cursor: pointer;
+	border-radius: 6px;
+	padding: 1rem;
+	width: 320px;
+	height: 320px;
+	background-color: #1a1a1a;
+	border: solid 1px #3a3a3a;
+	transition: all 0.2s ease;
+}
+
+.dog {
+	background-image: url("../../../assets/dog.png");
+}
+.dog:hover {
+	background-color: #3a3a3a;
+}
+.cat {
+	background-image: url("../../../assets/cat.png");
+}
+.cat:hover {
+	background-color: #3a3a3a;
+}
+.lizard {
+	background-image: url("../../../assets/lizard.png");
+}
+.lizard:hover {
+	background-color: #3a3a3a;
+}
+
+.bottom-of-card-text {
+	font-size: 20px;
+	position: absolute;
+	bottom: 1rem;
+	font-weight: 400;
+	color: rgb(244, 244, 244);
+	text-align: center;
+	width: 280px;
+}
