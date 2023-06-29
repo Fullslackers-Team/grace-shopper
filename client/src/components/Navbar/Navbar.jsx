@@ -3,7 +3,7 @@ import { logout } from "../../api/auth";
 import useAuth from "../../hook/useAuth";
 import { Link } from "react-router-dom";
 import "./index.css";
-
+import searchBar from "../SearchBar/SearchBar";
 export default function Navbar() {
 	const { setLoggedIn, loggedIn } = useAuth();
 
@@ -18,6 +18,7 @@ export default function Navbar() {
 			</div>
 
 			<ul className="navlinks">
+				<searchBar />
 				<li>
 					<Link to="/">
 						<button className="link">Home</button>
