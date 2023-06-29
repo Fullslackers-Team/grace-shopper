@@ -1,0 +1,23 @@
+.topSellers {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 75px 0px 75px;
+}
+
+/* .topSellersImage {
+    display: flex;
+} */
+
+.topSellersList {
+    text-align: left;
+    margin-top: 0;
+}
+
+.productName {
+    margin-bottom: 0;
+}
+
+.productInfo {
+    margin-top: 0;
+}
