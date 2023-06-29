@@ -13,7 +13,10 @@ export default function Navbar() {
 	}
 	return (
 		<div className="navbar">
-			<h1>Grace Shopper</h1>
+			<div className="header">
+				<h1>Grace Shopper</h1>
+			</div>
+
 			<ul className="navlinks">
 				<li>
 					<Link to="/">

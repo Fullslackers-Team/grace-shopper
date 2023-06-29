@@ -2,6 +2,18 @@
 	display: flex;
 	flex-direction: row;
 	list-style: none;
-	float: right;
+	position: sticky;
+	width: 100%;
+	justify-content: flex-end;
+}
+.navbar {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
 	margin-right: 20px;
+}
+
+.header {
+	min-width: fit-content;
+	margin-left: 20px;
 }

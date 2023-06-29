@@ -4,7 +4,7 @@ import "./index.css";
 export default function Footer() {
 	return (
 		<div className="footer">
-			<ul className="navlinks">
+			<ul className="footlinks">
 				<Link to="/">
 					<button className="link">Contact Us</button>
 				</Link>
