@@ -2,12 +2,10 @@ export async function getOrders() {
 	try {
 		const response = await fetch(`api/orders`);
 		const result = await response.json();
-		console.log(result);
 		return result;
 	} catch (error) {
 		console.error(error);
 	}
-	getOrders();
 }
 
 export async function createOrder(creator_id, status) {
@@ -57,10 +55,8 @@ export async function deleteOrder() {
 			},
 		});
 		const result = await response.json();
-		console.log("Result from Delete", result);
 		return result;
 	} catch (error) {
 		console.error(error);
 	}
-	deleteOrder();
 }

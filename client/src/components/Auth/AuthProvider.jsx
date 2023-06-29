@@ -1,5 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { getUser } from "../../api/users";
+import { login } from "../../api/auth";
 
 export const AuthContext = createContext();
 
@@ -10,7 +12,7 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		async function getMe() {
 			try {
-				const { user } = await fetchMe();
+				const { user } = await getUser();
 				setUser(user);
 				setLoggedIn(true);
 			} catch (error) {
@@ -33,9 +35,7 @@ const AuthProvider = ({ children }) => {
 
 	console.log("user from Auth Context", user);
 
-	return (
-		<AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
-	);
+	return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;
