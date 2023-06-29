@@ -1,6 +1,12 @@
-.navlinks {
+.footlinks {
 	display: flex;
 	flex-direction: row;
 	list-style: none;
 	align-items: center;
+	justify-content: center;
+}
+
+.footer {
+	display: flex;
+	justify-content: center;
 }
