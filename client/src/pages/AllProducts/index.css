@@ -1,0 +1,38 @@
+.Products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Product-Content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 5px 0;
+}
+.Product-Card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 6px;
+    align-items: center;
+    width: 230px;
+    margin: 0 10px 10px 0;
+    background-color: white;
+}
+
+.Product-Name {
+    display: flex;
+    align-items: center;
+    color: black;
+    text-transform: uppercase;
+    font-size: 12pt;
+}
+
+.Product-Price {
+    display: flex;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
