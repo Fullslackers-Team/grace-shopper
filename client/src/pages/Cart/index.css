@@ -1,0 +1,16 @@
+.cart-container {
+	min-width: fit-content;
+	min-height: fit-content;
+	background-color: black;
+}
+.link {
+	min-width: fit-content;
+	min-height: fit-content;
+	background-color: white;
+}
+
+.product-card {
+	background-color: white;
+	min-width: fit-content;
+	min-height: fit-content;
+}
