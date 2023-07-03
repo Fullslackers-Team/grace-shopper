@@ -41,7 +41,7 @@ export default function AuthForm({ loginPage }) {
 					sx={{ width: "100%", mt: "1rem" }}
 					onClick={() => {
 						if (loginPage) {
-							handeLoging();
+							handleLogin();
 						} else {
 							handleRegister();
 						}
