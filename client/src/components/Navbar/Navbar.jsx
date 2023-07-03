@@ -18,20 +18,20 @@ export default function Navbar() {
 			</div>
 
 			<ul className="navlinks">
-				<searchBar />
+				{/* <searchBar /> */}
 				<li>
 					<Link to="/">
 						<button className="link">Home</button>
 					</Link>
 				</li>
 				<li>
-					<Link to="/Products">
+					<Link to="/products">
 						<button className="link">All Products</button>
 					</Link>
 				</li>
 				{loggedIn ? (
 					<li>
-						<Link to="/orderItems">
+						<Link to="/cart">
 							<button className="link">My Cart</button>
 						</Link>
 					</li>
@@ -39,7 +39,7 @@ export default function Navbar() {
 					<></>
 				)}
 				<li>
-					<Link to="/Login">
+					<Link to="/login">
 						<button className="link">Login</button>
 					</Link>
 				</li>
