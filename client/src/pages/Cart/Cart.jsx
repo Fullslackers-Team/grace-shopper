@@ -5,6 +5,7 @@ import {
 	removeAllProductsFromOrder,
 } from "../../api/orderItems";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
 	const [orderItems, setOrderItems] = useState([]);
@@ -29,6 +30,11 @@ export default function Cart() {
 								<button className="link" onClick={removeAllProductsFromOrder}>
 									Empty Cart
 								</button>
+							</p>
+							<p className="checkout-button">
+								<Link to="/checkout">
+									<button className="link"> Continue to checkout</button>
+								</Link>
 							</p>
 						</div>
 				  ))
