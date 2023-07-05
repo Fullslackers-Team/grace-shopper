@@ -1,7 +1,7 @@
 import "./index.css";
 import React, { useState } from "react";
 
-export default function checkoutPay() {
+export default function CheckoutPay({ setPage }) {
   const [fullname, setFullName] = useState("");
   const [cardnumber, setCardNumber] = useState("");
   const [expiration, setExpiration] = useState("");
@@ -53,7 +53,9 @@ export default function checkoutPay() {
         />
 
         <br></br>
-        <button type="submit">NEXT</button>
+        <button type="submit" onClick={() => setPage("CheckoutThanks")}>
+          NEXT
+        </button>
       </form>
     </div>
   );
