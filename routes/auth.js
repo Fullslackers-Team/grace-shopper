@@ -14,20 +14,27 @@ router.post("/register", async (req, res, next) => {
 	} else {
 		try {
 			const user = await createUser(username, password);
-			delete user.password;
-			const token = jwt.sign(user, process.env.JWT_SECRET, {
-				expiresIn: "2w",
-			});
-			res.cookie("token", token, {
-				sameSite: "strict",
-				httpOnly: true,
-				signed: true,
-			});
-			res.send({
-				success: true,
-				message: "Registration was a success!",
-				user,
-			});
+			if (user) {
+				delete user.password;
+				const token = jwt.sign(user, process.env.JWT_SECRET, {
+					expiresIn: "2w",
+				});
+				res.cookie("token", token, {
+					sameSite: "strict",
+					httpOnly: true,
+					signed: true,
+				});
+				res.send({
+					success: true,
+					message: "Registration was a success!",
+					user,
+				});
+			} else {
+				next({
+					name: "Incorrect Information Error",
+					message: "Username or password is invalid.",
+				});
+			}
 		} catch (error) {
 			if (error.code === "23505") {
 				next({
