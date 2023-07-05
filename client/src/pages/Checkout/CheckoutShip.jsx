@@ -1,48 +1,48 @@
 import "./index.css";
 import React, { useState } from "react";
 
-export default function checkoutPay() {
+export default function CheckoutShip() {
   const [fullname, setFullName] = useState("");
-  const [cardnumber, setCardNumber] = useState("");
-  const [expiration, setExpiration] = useState("");
-  const [cvv, setCvv] = useState("");
+  const [streetaddress, setStreetAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [zipcode, setZipCode] = useState("");
 
   return (
     <div className="checkout-forms">
       <form
-        className="checkout-form-pay"
+        className="checkout-form-ship"
         onSubmit={async (e) => {
           e.preventDefault();
-          await checkoutPay(fullname, cardnumber, expiration, cvv, zipcode);
+          await checkoutShip(fullname, streetaddress, city, state, zipcode);
         }}
       >
-        <label>Name as it appears on Card:</label>
+        <label>Full Name:</label>
         <textarea
           style={{ padding: "5px" }}
           value={fullname}
           onChange={(event) => setFullName(event.target.value)}
         />
 
-        <label>Card Number:</label>
+        <label>Street Address:</label>
         <textarea
           style={{ padding: "5px" }}
-          value={cardnumber}
-          onChange={(event) => setCardNumber(event.target.value)}
+          value={streetaddress}
+          onChange={(event) => setStreetAddress(event.target.value)}
         />
 
-        <label>Expiration:</label>
+        <label>City:</label>
         <textarea
           style={{ padding: "5px" }}
-          value={expiration}
-          onChange={(event) => setExpiration(event.target.value)}
+          value={city}
+          onChange={(event) => setCity(event.target.value)}
         />
 
-        <label>CVV:</label>
+        <label>State:</label>
         <textarea
           style={{ padding: "5px" }}
-          value={cvv}
-          onChange={(event) => setCvv(event.target.value)}
+          value={state}
+          onChange={(event) => setState(event.target.value)}
         />
 
         <label>Zip Code:</label>
