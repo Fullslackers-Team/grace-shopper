@@ -5,11 +5,16 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import searchBar from "../SearchBar/SearchBar";
 export default function Navbar() {
-	const { setLoggedIn, loggedIn } = useAuth();
+	const { setUser, loggedIn, setLoggedIn } = useAuth();
 
 	async function handleLogout() {
-		await logout();
-		setLoggedIn(!loggedIn);
+		try {
+			await logout();
+			setUser(null);
+			setLoggedIn(false);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 	return (
 		<div className="navbar">
@@ -38,11 +43,15 @@ export default function Navbar() {
 				) : (
 					<></>
 				)}
-				<li>
-					<Link to="/login">
-						<button className="link">Login</button>
-					</Link>
-				</li>
+				{!loggedIn ? (
+					<li>
+						<Link to="/login">
+							<button className="link">Login</button>
+						</Link>
+					</li>
+				) : (
+					""
+				)}
 				{loggedIn ? (
 					<li>
 						<Link to="/">
