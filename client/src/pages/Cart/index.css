@@ -1,0 +1,25 @@
+.cart-container {
+	min-width: 100%;
+	min-height: 100%;
+	color: white;
+}
+.link {
+	min-width: fit-content;
+	min-height: fit-content;
+	background-color: white;
+	color: black;
+	border-color: white;
+}
+
+.product-card {
+	background-color: white;
+	min-width: fit-content;
+	min-height: fit-content;
+}
+
+.remove-buttons {
+	min-width: 100%;
+	min-height: fit-content;
+	display: flex;
+	flex-direction: row;
+}

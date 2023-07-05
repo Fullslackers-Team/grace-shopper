@@ -8,6 +8,15 @@ export async function getOrders() {
 	}
 }
 
+export async function getOrderByCreatorId(creator_id) {
+	try {
+		const response = await fetch(`api/orders/${creator_id}`);
+		const result = await response.json();
+		return result;
+	} catch (error) {
+		console.error(error);
+	}
+}
 export async function createOrder(creator_id, status) {
 	try {
 		const resp = await fetch(`/api/orders`, {
