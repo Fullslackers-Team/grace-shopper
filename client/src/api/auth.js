@@ -2,18 +2,19 @@ export async function login(username, password) {
 	try {
 		const resp = await fetch(`/api/auth/login`, {
 			method: "POST",
-			body: {
+			body: JSON.stringify({
 				username,
 				password,
-			},
+			}),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
 		const result = await resp.json();
-		return result.data;
+		return result;
 	} catch (error) {
-		console.error(error);
+		const result = await error.json();
+		console.error(result);
 	}
 }
 
@@ -21,16 +22,16 @@ export async function register(username, password) {
 	try {
 		const resp = await fetch(`/api/auth/register`, {
 			method: "POST",
-			body: {
+			body: JSON.stringify({
 				username,
 				password,
-			},
+			}),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
 		const result = await resp.json();
-		return result.data;
+		return result;
 	} catch (error) {
 		console.error(error);
 	}

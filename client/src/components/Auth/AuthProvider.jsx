@@ -12,12 +12,16 @@ const AuthProvider = ({ children }) => {
 	useEffect(() => {
 		async function getMe() {
 			try {
-				const { user } = await getUser();
-				setUser(user);
-				setLoggedIn(true);
+				const resp = await getUser();
+				if (resp.data) {
+					setUser(resp.data);
+					setLoggedIn(true);
+				} else {
+					setUser(null);
+					setLoggedIn(false);
+				}
 			} catch (error) {
-				setUser(null);
-				setLoggedIn(false);
+				console.error(error);
 			}
 		}
 		getMe();
@@ -32,8 +36,6 @@ const AuthProvider = ({ children }) => {
 	AuthProvider.propTypes = {
 		children: PropTypes.node.isRequired,
 	};
-
-	console.log("user from Auth Context", user);
 
 	return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
 };
