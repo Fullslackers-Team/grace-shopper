@@ -19,6 +19,8 @@ async function createProduct(name, price, description, stock) {
   }
 }
 
+// Try to loop over the object sent in and generate strings to pass the query
+// that way you could only pass update produce a single field
 async function updateProduct(name, price, description, stock, id) {
   try {
     const {

@@ -14,4 +14,7 @@ const authRequired = (req, res, next) => {
   next();
 };
 
+// check admin util function
+// check is the req.user's role is the admin
+
 module.exports = { authRequired };

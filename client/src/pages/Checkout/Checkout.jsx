@@ -5,6 +5,7 @@ import CheckoutThanks from "./CheckoutThanks";
 
 export default function Checkout() {
   const [page, setPage] = useState("CheckoutShip");
+  // Use router navigation to move from page to page
 
   return (
     <div>

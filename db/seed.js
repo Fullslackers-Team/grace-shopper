@@ -60,7 +60,12 @@ async function populateTables() {
       await createUser(user.username, user.password);
     }
     for (const product of products) {
-      await createProduct(product.name, product.price, product.description, product.stock);
+      await createProduct(
+        product.name,
+        product.price,
+        product.description,
+        product.stock
+      );
     }
     for (const order of orders) {
       await createOrder(order.creator_id, order.status);

@@ -4,9 +4,12 @@ import ReptileProducts from "./components/ReptilesProduct";
 import "./index.css";
 
 export default function AllProducts() {
-  return <div>
-    <DogProducts />
-    <CatProducts />
-    <ReptileProducts />
-  </div>;
+  // fetch all products from DB
+  return (
+    <div>
+      <DogProducts />
+      <CatProducts />
+      <ReptileProducts />
+    </div>
+  );
 }
