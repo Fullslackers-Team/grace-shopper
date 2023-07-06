@@ -1,5 +1,5 @@
 import "./index.css";
-import { removeProductFromOrder } from "../../api/orderItems";
+import { removeProductFromOrder, removeAllProductsFromOrder } from "../../api/orderItems";
 import { getOrderByCreatorId } from "../../api/orders";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";

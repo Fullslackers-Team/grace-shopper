@@ -52,6 +52,7 @@ export default function AuthForm({ loginPage }) {
 
 	return (
 		<div className="auth-form">
+			<h1>{loginPage ? "Login" : "Register"}</h1>
 			<TextField label="Username" variant="filled" value={username} onChange={(e) => setUsername(e.target.value)} />
 			<FormControl variant="filled">
 				<InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
@@ -89,7 +90,7 @@ export default function AuthForm({ loginPage }) {
 					{loginPage ? "Login" : "Register"}
 				</Button>
 				{errorText && errorText.length ? <p className="info-text">{errorText}</p> : ""}
-				<p style={{ marginBottom: "-0.25rem" }}>
+				<p style={{ marginBottom: "0" }}>
 					{loginPage ? "Need an account? " : "Already have an account? "}
 					<span>
 						<Link to={loginPage ? "/register" : "/login"} className="link">
