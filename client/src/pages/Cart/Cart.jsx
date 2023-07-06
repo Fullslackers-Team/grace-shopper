@@ -6,8 +6,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hook/useAuth";
 
 export default function Cart() {
-	const [orderItems, setOrderItems] = useState([]);
-	const { user } = useAuth();
+	const { user, cartItems } = useAuth();
 
 	useEffect(() => {
 		async function fetchOrderItems() {
@@ -16,11 +15,12 @@ export default function Cart() {
 				setOrderItems(response.data);
 			}
 		}
-		fetchOrderItems();
-	}, [user]);
+		console.log(cartItems);
+		// fetchOrderItems();
+	}, []);
 	return (
 		<div className="cart-container">
-			{orderItems
+			{/* {orderItems
 				? orderItems.map((orderItem, product_id) => (
 						<div key={product_id} className="product-card">
 							<h1 className="product-name">{orderItem.name}</h1>
@@ -32,7 +32,7 @@ export default function Cart() {
 							</p>
 						</div>
 				  ))
-				: ""}
+				: ""} */}
 
 			<p className="checkout-button">
 				<Link to="/checkout">

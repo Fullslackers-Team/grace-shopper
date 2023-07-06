@@ -27,6 +27,7 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.22",
     "pg": "^8.11.0",
+    "react-cookie": "^4.1.1",
     "styled-components": "^5.3.11"
   }
 }
