@@ -22,12 +22,12 @@ const AuthProvider = ({ children }) => {
 					setUser(resp.data);
 					setLoggedIn(true);
 
-					const orderId = await getOrderByCreatorId(resp.data.id);
-					const orderItems = await getOrderItems(orderId.data.creator_id);
+					// const orderId = await getOrderByCreatorId(resp.data.id);
+					// 	const orderItems = await getOrderItems(orderId.data.creator_id);
 
-					for (let i = 0; i < orderItems.length; i++) {
-						newCart.push(orderItems[i].product_id);
-					}
+					// 	for (let i = 0; i < orderItems.length; i++) {
+					// 		newCart.push(orderItems[i].product_id);
+					// 	}
 				} else {
 					setUser(null);
 					setLoggedIn(false);
