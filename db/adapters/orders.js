@@ -39,7 +39,9 @@ async function editOrder(id, status) {
 
 async function destroyOrder(id) {
 	try {
-		const { rows } = await client.query(
+		const {
+			rows: [destroyedOrder],
+		} = await client.query(
 			`
       DELETE from orders
       WHERE id = $1
@@ -48,13 +50,13 @@ async function destroyOrder(id) {
       `,
 			[id]
 		);
-		return true;
+		return destroyedOrder;
 	} catch (error) {
 		throw error;
 	}
 }
 
-async function getOrderbyCreatorId(creator_id) {
+async function getOrderbyCreatorId(id) {
 	try {
 		const {
 			rows: [order],
@@ -63,7 +65,7 @@ async function getOrderbyCreatorId(creator_id) {
     	SELECT * FROM orders
     	WHERE id=$1;
   		`,
-			[creator_id]
+			[id]
 		);
 		return order;
 	} catch (error) {
