@@ -5,7 +5,10 @@ const saltRounds = 10;
 
 async function createUser(guest, username, password) {
 	try {
-		const hashedPassword = bcrypt.hashSync(guest ? "123" : password, saltRounds);
+		const hashedPassword = bcrypt.hashSync(
+			guest ? "123" : password,
+			saltRounds
+		);
 
 		const {
 			rows: [user],
