@@ -1,11 +1,6 @@
 const ordersRouter = require("express").Router();
 const { authRequired } = require("./utils");
-const {
-	createOrder,
-	editOrder,
-	destroyOrder,
-	getOrderbyCreatorId,
-} = require("../db/adapters/orders");
+const { createOrder, editOrder, destroyOrder, getOrderbyCreatorId } = require("../db/adapters/orders");
 
 ordersRouter.post("/", async (req, res, next) => {
 	try {

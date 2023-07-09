@@ -5,8 +5,8 @@ const { authRequired } = require("./utils");
 
 productsRouter.post("/", async (req, res, next) => {
 	try {
-		const { name, price, description, stock } = req.body;
-		const createdProduct = await createProduct(name, price, description, stock);
+		const { name, price, description, stock, img_url, rating } = req.body;
+		const createdProduct = await createProduct(name, price, description, stock, img_url, rating);
 		res.send({ success: true, message: "Successfully created product.", data: createdProduct });
 	} catch (error) {
 		next(error);
@@ -15,11 +15,11 @@ productsRouter.post("/", async (req, res, next) => {
 
 productsRouter.patch("/:id", authRequired, async (req, res, next) => {
 	const { id } = req.params;
-	const { name, price, description, stock } = req.body;
+	const { name, price, description, stock, img_url, rating } = req.body;
 	try {
 		const order = await getProductById(id);
 		if (order.length) {
-			const updatedProduct = await updateProduct(name, price, description, stock, id);
+			const updatedProduct = await updateProduct(id, name, price, description, stock, img_url, rating);
 			res.send({ success: true, message: "Successfully updated product.", data: updatedProduct });
 		} else {
 			next({
