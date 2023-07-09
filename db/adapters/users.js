@@ -3,19 +3,19 @@ const client = require("../client");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-async function createUser(username, password) {
+async function createUser(guest, username, password) {
 	try {
-		const hashedPassword = bcrypt.hashSync(password, saltRounds);
+		const hashedPassword = bcrypt.hashSync(guest ? "123" : password, saltRounds);
 
 		const {
 			rows: [user],
 		} = await client.query(
 			`
-        INSERT INTO users("username", "password") 
-        VALUES($1, $2) 
+        INSERT INTO users("username", "password", "role") 
+        VALUES($1, $2, $3) 
         RETURNING *;
       `,
-			[username, hashedPassword]
+			guest ? ["guest", null, "guest"] : [username, hashedPassword, "user"]
 		);
 		return user;
 	} catch (error) {
