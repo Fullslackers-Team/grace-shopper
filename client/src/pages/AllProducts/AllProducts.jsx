@@ -1,6 +1,3 @@
-// import DogProducts from "./components/DogProducts";
-// import CatProducts from "./components/CatProducts";
-// import ReptileProducts from "./components/ReptilesProduct";
 // import "./index.css";
 
 import React from "react";
