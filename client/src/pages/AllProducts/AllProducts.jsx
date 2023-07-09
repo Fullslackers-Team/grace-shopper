@@ -28,7 +28,7 @@ export default function AllProducts() {
             </h3>
             <img className="productCard-Image" style={{width:"200px", height:"175px", borderRadius:"6px"}} src={products.img_url}/>
             <h3 className="productCard-Price">
-              <span><button onClick={() => {navigate(`/${products.id}`);}}>View Item</button></span>
+              <span><button onClick={() => {navigate(`/products/${products.id}`);}}>View Item</button></span>
               <span>Price: ${products.price}</span>
               </h3>
           </div>
