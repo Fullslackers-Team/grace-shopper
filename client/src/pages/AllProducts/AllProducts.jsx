@@ -20,11 +20,10 @@ export default function AllProducts() {
   <div className="allProductsPage">
     {allProducts.map((products) => {
       return (
-        <div className="allProducts">
           <div className="productCard" key={products.id}>
             <h3 className="productCard-Name">
               <span>{products.name}</span>
-              <span class="material-icons">add_shopping_cart</span>
+              <span className="material-icons">add_shopping_cart</span>
             </h3>
             <img className="productCard-Image" style={{width:"200px", height:"175px", borderRadius:"6px"}} src={products.img_url}/>
             <h3 className="productCard-Price">
@@ -32,7 +31,6 @@ export default function AllProducts() {
               <span>Price: ${products.price}</span>
               </h3>
           </div>
-        </div>
       )
     })}
   </div>
