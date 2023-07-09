@@ -6,3 +6,21 @@
 .product-info {
 	text-align: left;
 }
+
+.product-img {
+	width: 400px;
+	height: 500px;
+	border-radius: 6px;
+}
+
+.product-name {
+	font-size: 30pt;
+}
+
+.material-icons {
+	font-size: 12pt;
+}
+
+.addButton {
+	width: 200px;
+}

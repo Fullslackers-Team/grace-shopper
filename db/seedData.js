@@ -24,7 +24,7 @@ const products = [
     description:
       "With its innovative delivery system, these tick collars offer a breakthrough in tick and flea control for your petite pooch and your furry feline. You will receive the Seresto Flea & Tick Collar for Dogs, up to 18-lbs + Flea & Tick Collar for Cats, both of which are veterinarian recommended treatments to repel and kill fleas on contact. Inside the unique polymer matrix of this easy-to-use, non-greasy, odorless collar are two active ingredients: imidacloprid to control flea infestations, and flumethrin to repel and kill ticks, larvae and nymphs. These ingredients work together to provide dual-action protection against parasitic pests for up to eight months!",
     price: "129.16",
-    rating: 1,
+    rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/293840_MAIN._AC_SL600_V1662160171_.jpg",
     stock: 10,
