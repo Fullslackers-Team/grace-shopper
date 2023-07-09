@@ -39,7 +39,9 @@ async function editOrder(id, status) {
 
 async function destroyOrder(id) {
 	try {
-		const { rows } = await client.query(
+		const {
+			rows: [destroyedOrder],
+		} = await client.query(
 			`
       DELETE from orders
       WHERE id = $1
@@ -48,7 +50,7 @@ async function destroyOrder(id) {
       `,
 			[id]
 		);
-		return true;
+		return destroyedOrder;
 	} catch (error) {
 		throw error;
 	}
