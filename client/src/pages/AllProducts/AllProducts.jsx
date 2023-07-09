@@ -1,10 +1,11 @@
 import "./index.css";
-
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../../api/products";
 
 export default function AllProducts() {
+  const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -23,7 +24,12 @@ export default function AllProducts() {
           <div className="productCard" key={products.id}>
             <h3 className="productCard-Name">{products.name}</h3>
             <img className="productCard-Image" style={{width:"200px", height:"175px", borderRadius:"6px"}} src={products.img_url}/>
-            <h3 className="productCard-Price">Price: ${products.price}</h3>
+            <h3 className="productCard-Price">
+              <span>
+              <button onClick={() => {navigate(`/${products.id}`);}}>View Item</button>
+              </span>
+              <span>Price: ${products.price}</span>
+              </h3>
           </div>
         </div>
       )
