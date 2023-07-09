@@ -1,12 +1,33 @@
-import DogProducts from "./components/DogProducts";
-import CatProducts from "./components/CatProducts";
-import ReptileProducts from "./components/ReptilesProduct";
-import "./index.css";
+// import DogProducts from "./components/DogProducts";
+// import CatProducts from "./components/CatProducts";
+// import ReptileProducts from "./components/ReptilesProduct";
+// import "./index.css";
+
+import React from "react";
+import { useState, useEffect } from "react";
+import { getAllProducts } from "../../api/products";
 
 export default function AllProducts() {
-  return <div>
-    <DogProducts />
-    <CatProducts />
-    <ReptileProducts />
-  </div>;
+  const [allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+    async function getProducts() {
+      const productList = await getAllProducts();
+      setAllProducts(productList);
+    }
+    getProducts();
+  }, []);
+
+  return (
+  <div className="allProoductsPage">
+    <h1>All Products</h1>
+    {allProducts.map((products) => {
+      return (
+        <div className="productCard" key={products.id}>
+          <h3>Product Name: {products.name}</h3>
+        </div>
+      )
+    })}
+  </div>
+  )
 }
