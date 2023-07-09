@@ -25,6 +25,7 @@ export default function AllProducts() {
       return (
         <div className="productCard" key={products.id}>
           <h3>Product Name: {products.name}</h3>
+          {/* <img style={{width:"200px", height:"175px"}} src={products.img_url}/> */}
         </div>
       )
     })}

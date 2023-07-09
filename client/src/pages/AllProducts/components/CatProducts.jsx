@@ -30,7 +30,7 @@ export default function CatProducts() {
 				<button style={{margin: '5px'}} onClick={() => {}}>View Product</button>
 			</div>
 			<div className="Product-Card">
-				<h3 className="Product-Name">Honest Kitech Grain Free Chicken Recipe</h3>
+				<h3 className="Product-Name">Frisco Sisal Cat Scratching Post</h3>
 				<img style={{width:"175px", height:"200px"}} className="Product-Img" src="https://image.chewy.com/is/image/catalog/324313_MAIN._AC_SL600_V1635802909_.jpg"/>
 				<p className="Product-Price">Price: $47</p>
 				<button style={{margin: '5px'}} onClick={() => {}}>View Product</button>
