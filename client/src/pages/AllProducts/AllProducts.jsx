@@ -1,6 +1,3 @@
-// import DogProducts from "./components/DogProducts";
-// import CatProducts from "./components/CatProducts";
-// import ReptileProducts from "./components/ReptilesProduct";
 // import "./index.css";
 
 import React from "react";
@@ -25,6 +22,7 @@ export default function AllProducts() {
       return (
         <div className="productCard" key={products.id}>
           <h3>Product Name: {products.name}</h3>
+          {/* <img style={{width:"200px", height:"175px"}} src={products.img_url}/> */}
         </div>
       )
     })}

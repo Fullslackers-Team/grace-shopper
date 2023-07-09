@@ -47,7 +47,7 @@ const products = [
   {
     name: "Donut Cuddler Bed",
     description: "Calming Shag Fur",
-    price: "100",
+    price: "25",
     rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/145724_MAIN._AC_SL600_V1671734310_.jpg",
@@ -56,7 +56,7 @@ const products = [
   {
     name: "Wire Dog Crate",
     description: "Sliding Double Door",
-    price: "100",
+    price: "115",
     rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/217625_MAIN._AC_SL600_V1580827476_.jpg",
@@ -65,7 +65,7 @@ const products = [
   {
     name: "KONG Tugga Wubba",
     description: "Extra strong fiber pull and tug toy",
-    price: "100",
+    price: "12",
     rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/53461_MAIN._AC_SL600_V1492195064_.jpg",
@@ -74,7 +74,7 @@ const products = [
   {
     name: "Honest Kitchen Dog Food",
     description: "Whole Grain Chicken Recipe",
-    price: "100",
+    price: "78",
     rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/85700_MAIN._AC_SL600_V1657661035_.jpg",
@@ -83,7 +83,7 @@ const products = [
   {
     name: "Milk Bone Dog Treat",
     description: "Bone marrow dog treat",
-    price: "100",
+    price: "12",
     rating: 5,
     img_url:
       "https://image.chewy.com/is/image/catalog/99863_MAIN._AC_SL600_V1627422000_.jpg",
@@ -92,7 +92,7 @@ const products = [
   {
     name: "Frisco Heavy Duty Cat Tree",
     description: "Frisco Heavy Duty Cat Tree",
-    price: "5",
+    price: "60",
     rating: 4,
     img_url:
       "https://image.chewy.com/is/image/catalog/166719_MAIN._AC_SL600_V1674509894_.jpg",
@@ -101,7 +101,7 @@ const products = [
   {
     name: "Dome Cleanstep Litter Box",
     description: "Dome Cleanstep Litter Box",
-    price: "5",
+    price: "37",
     rating: 4,
     img_url:
       "https://image.chewy.com/is/image/catalog/68666_MAIN._AC_SL600_V1565284344_.jpg",
@@ -110,7 +110,7 @@ const products = [
   {
     name: "Yeowww! Organic Catnip 2oz Tub",
     description: "Yeowww! Organic Catnip 2oz Tub",
-    price: "5",
+    price: "11",
     rating: 4,
     img_url:
       "https://image.chewy.com/is/catalog/103031._AC_SL600_V1467808857_.jpg",
@@ -119,7 +119,7 @@ const products = [
   {
     name: "Frisco Sisal Cat Scratching Post",
     description: "Frisco Sisal Cat Scratching Post",
-    price: "5",
+    price: "17",
     rating: 4,
     img_url:
       "https://image.chewy.com/is/image/catalog/140151_MAIN._AC_SL600_V1674156327_.jpg",
@@ -128,57 +128,58 @@ const products = [
   {
     name: "Honest Kitchen Grain Free Chicken Recipe",
     description: "Honest Kitchen Grain Free Chicken Recipe",
-    price: "5",
+    price: "47",
     rating: 4,
     img_url:
       "https://image.chewy.com/is/image/catalog/324313_MAIN._AC_SL600_V1635802909_.jpg",
     stock: 50,
   },
-  //   {
-  //     name: "",
-  //     description: "",
-  //     price: "5",
-  //     rating: 4,
-  //     img_url: "",
-  //     stock: 50,
-  //   },
-  //   {
-  //     name: "",
-  //     description: "",
-  //     price: "5",
-  //     rating: 4,
-  //     img_url: "",
-  //     stock: 50,
-  //   },
-  //   {
-  //     name: "",
-  //     description: "",
-  //     price: "5",
-  //     rating: 4,
-  //     img_url: "",
-  //     stock: 50,
-  //   },
-  //   {
-  //     name: "",
-  //     description: "",
-  //     price: "5",
-  //     rating: 4,
-  //     img_url: "",
-  //     stock: 50,
-  //   },
-  //   {
-  //     name: "",
-  //     description: "",
-  //     price: "5",
-  //     rating: 4,
-  //     img_url: "",
-  //     stock: 50,
-  //   },
+  {
+    name: "REPTI ZOO Tank Stand Terrarium",
+    description: "REPTI ZOO Tank Stand Terrarium",
+    price: "260",
+    rating: 4,
+    img_url:
+      "https://image.chewy.com/is/image/catalog/839670_MAIN._AC_SL600_V1682003172_.jpg",
+    stock: 50,
+  },
+  {
+    name: "HerpCult Acrylic Clear-Top Habitat",
+    description: "HerpCult Acrylic Clear-Top Habitat",
+    price: "100",
+    rating: 4,
+    img_url:
+      "https://image.chewy.com/is/image/catalog/294804_MAIN._AC_SL600_V1621029202_.jpg",
+    stock: 50,
+  },
+  {
+    name: "Oiibo Full Glass Terrarium 24-gal",
+    description: "Oiibo Full Glass Terrarium 24-gal",
+    price: "180",
+    rating: 4,
+    img_url:
+      "https://image.chewy.com/is/image/catalog/262856_MAIN._AC_SL600_V1621521433_.jpg",
+    stock: 50,
+  },
+  {
+    name: "REPTI ZOO Tempered Glass Terrarium",
+    description: "REPTI ZOO Tempered Glass Terrarium",
+    price: "190",
+    rating: 4,
+    img_url:
+      "https://image.chewy.com/is/image/catalog/697614_MAIN._AC_SL600_V1667406002_.jpg",
+    stock: 50,
+  },
+  {
+    name: "New Age Pet ECOPLEX Mojave Habitat",
+    description: "New Age Pet ECOPLEX Mojave Habitat",
+    price: "310",
+    rating: 4,
+    img_url:
+      "https://image.chewy.com/is/image/catalog/242180_MAIN._AC_SL600_V1619204278_.jpg",
+    stock: 50,
+  },
 ];
-
-// const productCategories = [{ name: "food" }, { name: "toys" }];
-
-// const petTypes = [];
 
 const orders = [
   { creator_id: 1, status: "shipped" },
