@@ -1,35 +1,19 @@
 * {
-  font-family: Georgia, "Times New Roman", Times, serif;
+	font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .checkout-forms {
-  display: flex;
-  flex-direction: column;
-  background-color: blanchedalmond;
-  border: 1rem;
-  border-color: black;
-  color: black;
-}
-
-.checkout-form-ship {
-}
-
-label {
+	display: flex;
+	flex-direction: column;
+	background-color: blanchedalmond;
+	border: 1rem;
+	border-color: black;
+	color: black;
 }
 
 textarea {
-  width: 500px;
-  height: 40px;
-  display: flex;
-  align-content: center;
-}
-
-button {
-  font-size: 12pt;
-  color: white;
-  background: darkblue;
-  padding: 5px 40px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px -2px black;
-  width: 100px;
+	width: 500px;
+	height: 40px;
+	display: flex;
+	align-content: center;
 }
