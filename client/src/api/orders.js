@@ -11,6 +11,7 @@ export async function getOrders() {
 export async function getOrderByCreatorId(creator_id) {
   try {
     const response = await fetch(`api/orders/${creator_id}`);
+    console.log(response);
     const result = await response.json();
     return result;
   } catch (error) {
