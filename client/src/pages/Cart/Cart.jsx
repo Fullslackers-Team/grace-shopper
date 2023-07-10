@@ -4,43 +4,31 @@ import { getOrderByCreatorId } from "../../api/orders";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../../hook/useAuth";
+import CartItem from "./CartItem";
 
 export default function Cart() {
 	const { user } = useAuth();
 
 	const [cart, setCart] = useState([]);
 
-	useEffect(() => {
-		async function fetchOrderItems() {
-			const orderId = await getOrderByCreatorId(user.id);
-			const orderItems = await getOrderItems(orderId.data.creator_id);
-
-			let newCart = [];
-			for (let i = 0; i < orderItems.length; i++) {
-				newCart.push(orderItems[i].product_id);
-			}
-
-			setCart(newCart);
-		}
+	async function fetchOrderItems() {
 		if (!user) return;
-		fetchOrderItems();
-	}, [user]);
+
+		const orderId = await getOrderByCreatorId(user.id);
+		if (!orderId.data) return;
+
+		const orderItems = await getOrderItems(orderId.data.creator_id);
+		const newCart = orderItems.map((orderItem) => orderItem.product_id);
+		if (newCart.length === cart.length) return;
+		setCart(newCart);
+	}
+	fetchOrderItems();
 
 	return (
 		<div className="cart-container">
-			{cart
-				? cart.map((product_id) => (
-						<div key={product_id} className="product-card">
-							<h1 className="product-name">{product_id}</h1>
-							{/* <p className="product-price">{orderItem.price}</p> */}
-							{/* <p className="remove-buttons">
-								<button className="link" onClick={removeProductFromOrder}>
-									Remove item from cart
-								</button>
-							</p> */}
-						</div>
-				  ))
-				: ""}
+			{cart.map((product_id) => {
+				return <CartItem key={product_id} productId={product_id} />;
+			})}
 
 			<p className="checkout-button">
 				<Link to="/checkout">
