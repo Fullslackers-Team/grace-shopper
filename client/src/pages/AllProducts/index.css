@@ -10,9 +10,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px;
-    margin: 0 10px 10px 0;
+    width: 275px;
+    margin: 15px;
     background-color: white;
+    box-shadow: 0 4px 10px gray;
 }
 
 .productCard-Name {
@@ -20,22 +21,28 @@
     justify-content: space-between;
     flex-direction: row;
     margin: 0 0 10px;
-    width: 250px;
+    width: 275px;
     padding: 5px;
-    background-color: #90caf9;
+    background-color: #4a4a4a;
     font-size: 10pt;
-    text-transform: uppercase;
 }
 
 .productCard-Price {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     margin: 10px 0 0;
     padding: 5px;
-    width: 250px;
-    background-color: rgb(151, 224, 161);
+    width: 275px;
+    background-color:#4a4a4a;
     color: white;
-    font-size: 12pt;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 11pt;
+}
+
+.viewtItemBtn {
+    font-size: 10pt;
+    margin: 0;
+    width: 115px;
+    height: 40px;
 }
