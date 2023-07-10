@@ -63,7 +63,7 @@ async function getOrderbyCreatorId(id) {
 		} = await client.query(
 			`
     	SELECT * FROM orders
-    	WHERE id=$1;
+    	WHERE creator_id=$1;
   		`,
 			[id]
 		);

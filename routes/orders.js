@@ -1,5 +1,5 @@
 const ordersRouter = require("express").Router();
-const { authRequired } = require("./utils");
+const { authRequired, adminRequired } = require("./utils");
 const {
 	createOrder,
 	editOrder,
@@ -21,26 +21,31 @@ ordersRouter.post("/", async (req, res, next) => {
 	}
 });
 
-ordersRouter.delete("/:orderId", authRequired, async (req, res, next) => {
-	try {
-		const { orderId } = req.params;
-		const order = await destroyOrder(orderId);
-		if (!order.length) {
-			next({
-				name: "NotFound",
-				message: "An order with that id does not exist.",
-			});
-		} else {
-			res.send({
-				success: true,
-				message: "Successfully deleted order.",
-				data: order,
-			});
+ordersRouter.delete(
+	"/:orderId",
+	authRequired,
+	adminRequired,
+	async (req, res, next) => {
+		try {
+			const { orderId } = req.params;
+			const order = await destroyOrder(orderId);
+			if (!order.length) {
+				next({
+					name: "NotFound",
+					message: "An order with that id does not exist.",
+				});
+			} else {
+				res.send({
+					success: true,
+					message: "Successfully deleted order.",
+					data: order,
+				});
+			}
+		} catch (error) {
+			next(error);
 		}
-	} catch (error) {
-		next(error);
 	}
-});
+);
 
 ordersRouter.patch("/", authRequired, async (req, res, next) => {
 	const { creator_id, status } = req.body;

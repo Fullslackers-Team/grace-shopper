@@ -1,13 +1,17 @@
 import { Button, FilledInput, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, TextField } from "@mui/material";
 import "./index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Link } from "react-router-dom";
-import { login, register } from "../../api/auth";
+import { Link, useNavigate } from "react-router-dom";
+import { login, loginGuest, register } from "../../api/auth";
 import useAuth from "../../hook/useAuth";
+import { useCookies } from "react-cookie";
 
 export default function AuthForm({ loginPage }) {
+	const navigate = useNavigate();
+
+	const [cookies, setCookie] = useCookies(["guest-user-id"]);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorText, setErrorText] = useState("");
@@ -19,7 +23,11 @@ export default function AuthForm({ loginPage }) {
 		event.preventDefault();
 	};
 
-	const { setUser, setLoggedIn } = useAuth();
+	const { loggedIn, setUser, setLoggedIn } = useAuth();
+
+	useEffect(() => {
+		if (loggedIn) navigate("/cart");
+	});
 
 	const handleLogin = async () => {
 		try {
@@ -35,11 +43,37 @@ export default function AuthForm({ loginPage }) {
 
 	const handleRegister = async () => {
 		try {
-			const resp = await register(username, password);
+			const resp = await register(false, username, password);
 			if (resp.success) {
 				setAccount(resp.user);
 			}
 			setErrorText(resp?.message || "");
+		} catch (err) {
+			console.error(err);
+		}
+	};
+
+	const handleGuest = async () => {
+		try {
+			if (cookies["guest-user-id"] === undefined) {
+				const resp = await register(true, null, null);
+				if (resp.success) {
+					// Login to site
+					setAccount(resp.user);
+					// Set Cookie
+					let expires = new Date();
+					expires.setTime(expires.getTime() + 1000 * 60 * 60 * 24 * 28); // 4 weeks
+					setCookie("guest-user-id", resp.user.id, { path: "/", expires, sameSite: "strict" });
+				}
+				setErrorText(resp?.message || "");
+			} else {
+				const resp = await loginGuest(cookies["guest-user-id"]);
+				if (resp.success) {
+					// Login to site
+					setAccount(resp.user);
+				}
+				setErrorText(resp?.message || "");
+			}
 		} catch (err) {
 			console.error(err);
 		}
@@ -89,6 +123,16 @@ export default function AuthForm({ loginPage }) {
 				>
 					{loginPage ? "Login" : "Register"}
 				</Button>
+				<Button
+					variant="outlined"
+					sx={{ width: "100%", mt: "1rem" }}
+					onClick={() => {
+						handleGuest();
+					}}
+				>
+					Continue As Guest
+				</Button>
+
 				{errorText && errorText.length ? <p className="info-text">{errorText}</p> : ""}
 				<p style={{ marginBottom: "0" }}>
 					{loginPage ? "Need an account? " : "Already have an account? "}

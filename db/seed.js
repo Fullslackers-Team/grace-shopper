@@ -24,16 +24,21 @@ async function createTables() {
   try {
     await client.query(`CREATE TABLE users(
       id SERIAL PRIMARY KEY,
-      username VARCHAR(255) UNIQUE NOT NULL,
-      password VARCHAR(255) NOT NULL,
+      username VARCHAR(255),
+      password VARCHAR(255),
       role VARCHAR(255) NOT NULL DEFAULT 'user'
-    );`);
+	  );
+	  CREATE UNIQUE INDEX allow_guests_users_username ON users(username)
+		WHERE username <> 'guest';
+	`);
 
     await client.query(`CREATE TABLE products (
         id SERIAL PRIMARY KEY,
         name VARCHAR(255) UNIQUE NOT NULL,
-        description VARCHAR(255) NOT NULL,
-        price VARCHAR(255) NOT NULL,
+        description VARCHAR(900) NOT NULL,
+        img_url VARCHAR(255) NOT NULL,
+        price NUMERIC NOT NULL,
+        rating NUMERIC NOT NULL,
         stock INTEGER NOT NULL
       );`);
 
@@ -57,10 +62,17 @@ async function populateTables() {
   console.log("Populating tables...");
   try {
     for (const user of users) {
-      await createUser(user.username, user.password);
+      await createUser(false, user.username, user.password);
     }
     for (const product of products) {
-      await createProduct(product.name, product.price, product.description, product.stock);
+      await createProduct(
+        product.name,
+        product.price,
+        product.description,
+        product.stock,
+        product.img_url,
+        product.rating
+      );
     }
     for (const order of orders) {
       await createOrder(order.creator_id, order.status);

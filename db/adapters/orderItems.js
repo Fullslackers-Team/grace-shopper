@@ -25,11 +25,14 @@ async function addItemsToOrder(order_id, product_ids) {
 		for (let i = 2; i < product_ids.length + 1; i++) {
 			queryValues.push(`($1, $${i})`);
 		}
-		queryValues[queryValues.length - 1] = `${queryValues[queryValues.length - 1]};`;
+		queryValues[queryValues.length - 1] = `${
+			queryValues[queryValues.length - 1]
+		};`;
 		queryValues = queryValues.join(", ");
-		console.log(`		    INSERT INTO order_items(order_id, product_id)
-    VALUES ${queryValues}
-    RETURNING *;`);
+		console.log(`
+		INSERT INTO order_items(order_id, product_id)
+    	VALUES ${queryValues}
+    	RETURNING *;`);
 
 		const {
 			rows: [orderItems],
@@ -66,14 +69,16 @@ async function addItemToOrder(order_id, product_id) {
 
 async function removeItemFromOrder(order_id, product_id) {
 	try {
-		await client.query(
+		const {
+			rows: [removedItem],
+		} = await client.query(
 			`
       DELETE FROM order_items
       WHERE order_id = $1 AND product_id = $2;
       `,
 			[order_id, product_id]
 		);
-		return true;
+		return removedItem;
 	} catch (error) {
 		throw error;
 	}
@@ -81,17 +86,25 @@ async function removeItemFromOrder(order_id, product_id) {
 
 async function removeAllItemsFromOrder(order_id) {
 	try {
-		await client.query(
+		const {
+			rows: [removedItems],
+		} = await client.query(
 			`
         DELETE FROM order_items
         WHERE order_id = $1;
       `,
 			[order_id]
 		);
-		return true;
+		return removedItems;
 	} catch (error) {
 		throw error;
 	}
 }
 
-module.exports = { getAllItemsFromOrder, addItemToOrder, addItemsToOrder, removeItemFromOrder, removeAllItemsFromOrder };
+module.exports = {
+	getAllItemsFromOrder,
+	addItemToOrder,
+	addItemsToOrder,
+	removeItemFromOrder,
+	removeAllItemsFromOrder,
+};

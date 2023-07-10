@@ -1,7 +1,7 @@
-import "./index.css";
+import "./checkout.css";
 import React, { useState } from "react";
 
-export default function CheckoutShip({ setPage }) {
+export default async function CheckoutShip({ setPage }) {
 	const [fullname, setFullName] = useState("");
 	const [streetaddress, setStreetAddress] = useState("");
 	const [city, setCity] = useState("");
@@ -14,26 +14,45 @@ export default function CheckoutShip({ setPage }) {
 				className="checkout-form-ship"
 				onSubmit={async (e) => {
 					e.preventDefault();
-					await checkoutShip(fullname, streetaddress, city, state, zipcode);
+					await CheckoutShip(fullname, streetaddress, city, state, zipcode);
 				}}
 			>
 				<label>Full Name:</label>
-				<textarea style={{ padding: "5px" }} value={fullname} onChange={(event) => setFullName(event.target.value)} />
+				<textarea
+					value={fullname}
+					onChange={(event) => setFullName(event.target.value)}
+				/>
 
 				<label>Street Address:</label>
-				<textarea style={{ padding: "5px" }} value={streetaddress} onChange={(event) => setStreetAddress(event.target.value)} />
+				<textarea
+					value={streetaddress}
+					onChange={(event) => setStreetAddress(event.target.value)}
+				/>
 
 				<label>City:</label>
-				<textarea style={{ padding: "5px" }} value={city} onChange={(event) => setCity(event.target.value)} />
+				<textarea
+					value={city}
+					onChange={(event) => setCity(event.target.value)}
+				/>
 
 				<label>State:</label>
-				<textarea style={{ padding: "5px" }} value={state} onChange={(event) => setState(event.target.value)} />
+				<textarea
+					value={state}
+					onChange={(event) => setState(event.target.value)}
+				/>
 
 				<label>Zip Code:</label>
-				<textarea style={{ padding: "5px" }} value={zipcode} onChange={(event) => setZipCode(event.target.value)} />
+				<textarea
+					value={zipcode}
+					onChange={(event) => setZipCode(event.target.value)}
+				/>
 
 				<br></br>
-				<button type="submit" onClick={() => setPage("CheckoutPay")}>
+				<button
+					className="link"
+					type="submit"
+					onClick={() => setPage("CheckoutPay")}
+				>
 					NEXT
 				</button>
 			</form>

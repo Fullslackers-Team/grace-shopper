@@ -1,0 +1,19 @@
+* {
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.checkout-forms {
+	display: flex;
+	flex-direction: column;
+	background-color: blanchedalmond;
+	border: 1rem;
+	border-color: black;
+	color: black;
+}
+
+textarea {
+	width: 500px;
+	height: 40px;
+	display: flex;
+	align-content: center;
+}
