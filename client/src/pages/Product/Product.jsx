@@ -29,33 +29,16 @@ export default function Product() {
 	return (
 		<div className="product-page">
 			<div>
-				<img src={imgurl} alt="Product Image" />
+				<img className="product-img" src={imgurl} alt="Product Image" />
 			</div>
 			<div className="product-info">
-				<h1>{name}</h1>
+				<h1 className="product-name">{name}</h1>
 				<p>{description}</p>
-				<p>{price}</p>
-				<p>{stock}</p>
-				<p>{rating}</p>
+				<p>Price: ${price}</p>
+				<p>Stock: {stock}</p>
+				<p>Stars: {rating} <span className="material-icons">star</span></p>
+				<button className="addButton">Add to Cart!</button>
 			</div>
 		</div>
 	);
 }
-
-// export default function singleItem() {
-// 	const [singleProduct, setSingleProduct] = useState({});
-// 	const { productId } = useParams();
-
-// 	useEffect (() => {
-// 		async function productDetails() {
-// 			setSingleProduct(await getProduct(productId));
-// 		}
-// 		productDetails()
-// 	}, []);
-
-// 	return (
-// 		<div className="singleProduct-Page">
-// 			<h1>{singleProduct.id}</h1>
-// 		</div>
-// 	)
-// }
