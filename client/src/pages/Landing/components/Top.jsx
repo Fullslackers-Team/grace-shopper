@@ -10,8 +10,8 @@ export default function top() {
         </h2>
         <p></p>
         <h3>
-          Here at ***, your best friend is our top priority. We offer the
-          highest quality items to keep your pet healthy, happy, and tame.
+          Here at Paws & Claws, your best friend is our top priority. We offer
+          the highest quality items to keep your pet healthy, happy, and tame.
         </h3>
 
         <p></p>
