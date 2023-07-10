@@ -108,7 +108,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "Yeowww! Organic Catnip 2oz Tub",
+    name: "Yeowww! Organic Catnip",
     description: "Yeowww! Organic Catnip 2oz Tub",
     price: "11",
     rating: 4,
@@ -117,7 +117,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "Frisco Sisal Cat Scratching Post",
+    name: "Frisco Scratching Post",
     description: "Frisco Sisal Cat Scratching Post",
     price: "17",
     rating: 4,
@@ -126,7 +126,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "Honest Kitchen Grain Free Chicken Recipe",
+    name: "Honest Kitchen Cat Food",
     description: "Honest Kitchen Grain Free Chicken Recipe",
     price: "47",
     rating: 4,
@@ -135,7 +135,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "REPTI ZOO Tank Stand Terrarium",
+    name: "REPTI ZOO Tank Stand",
     description: "REPTI ZOO Tank Stand Terrarium",
     price: "260",
     rating: 4,
@@ -144,7 +144,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "HerpCult Acrylic Clear-Top Habitat",
+    name: "HerpCult Acrylic Habitat",
     description: "HerpCult Acrylic Clear-Top Habitat",
     price: "100",
     rating: 4,
@@ -153,7 +153,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "Oiibo Full Glass Terrarium 24-gal",
+    name: "Oiibo Full Glass Terrarium",
     description: "Oiibo Full Glass Terrarium 24-gal",
     price: "180",
     rating: 4,
@@ -162,7 +162,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "REPTI ZOO Tempered Glass Terrarium",
+    name: "REPTI ZOO Tempered Glass",
     description: "REPTI ZOO Tempered Glass Terrarium",
     price: "190",
     rating: 4,
@@ -171,7 +171,7 @@ const products = [
     stock: 50,
   },
   {
-    name: "New Age Pet ECOPLEX Mojave Habitat",
+    name: "ECOPLEX Mojave Habitat",
     description: "New Age Pet ECOPLEX Mojave Habitat",
     price: "310",
     rating: 4,
