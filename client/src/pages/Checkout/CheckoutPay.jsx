@@ -50,7 +50,11 @@ export default function CheckoutPay({ setPage }) {
         />
 
         <br></br>
-        <button type="submit" onClick={() => setPage("CheckoutThanks")}>
+        <button
+          className="link"
+          type="submit"
+          onClick={() => setPage("CheckoutThanks")}
+        >
           NEXT
         </button>
       </form>
