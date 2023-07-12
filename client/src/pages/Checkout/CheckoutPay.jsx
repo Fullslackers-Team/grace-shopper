@@ -18,31 +18,33 @@ export default function CheckoutPay({ setPage }) {
         }}
       >
         <label>Name as it appears on Card:</label>
-        <textarea
+        <br></br>
+        <input
           value={fullname}
           onChange={(event) => setFullName(event.target.value)}
         />
-
+        <br></br>
         <label>Card Number:</label>
-        <textarea
+        <br></br>
+        <input
           value={cardnumber}
           onChange={(event) => setCardNumber(event.target.value)}
         />
-
+        <br></br>
         <label>Expiration:</label>
-        <textarea
+        <br></br>
+        <input
           value={expiration}
           onChange={(event) => setExpiration(event.target.value)}
         />
-
+        <br></br>
         <label>CVV:</label>
-        <textarea
-          value={cvv}
-          onChange={(event) => setCvv(event.target.value)}
-        />
-
+        <br></br>
+        <input value={cvv} onChange={(event) => setCvv(event.target.value)} />
+        <br></br>
         <label>Zip Code:</label>
-        <textarea
+        <br></br>
+        <input
           value={zipcode}
           onChange={(event) => setZipCode(event.target.value)}
         />
