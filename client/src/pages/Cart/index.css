@@ -50,6 +50,8 @@
 }
 .product-close-icon:hover {
 	color: #cc00cc;
+	background-color: transparent;
+	box-shadow: none;
 	transform: translateY(-3px);
 }
 .product-sum-text {
