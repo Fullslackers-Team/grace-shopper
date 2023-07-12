@@ -20,7 +20,7 @@ input {
   text-align: center;
 }
 
-button {
+.link-button {
   width: 200px;
   padding: 14px 20px;
   margin: 8px 0;
