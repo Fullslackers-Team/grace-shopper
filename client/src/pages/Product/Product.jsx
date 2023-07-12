@@ -11,6 +11,7 @@ export default function Product() {
 	const { id } = useParams();
 	const { user } = useAuth();
 
+	const [buttonText, setButtonText] = useState("Add to Cart");
 	const [name, setName] = useState("");
 	const [productId, setProductId] = useState("");
 	const [description, setDescription] = useState("");
@@ -34,9 +35,17 @@ export default function Product() {
 	}, [id]);
 
 	async function addToCart() {
-		const order = await getOrderByCreatorId(user.id);
-		if (!order) return;
-		const newProduct = await addProductToOrder(order.data.id, productId);
+		try {
+			const order = await getOrderByCreatorId(user.id);
+			if (!order) return;
+			const newProduct = await addProductToOrder(order.data.id, productId);
+			setButtonText("Added item to cart!");
+			setTimeout(() => {
+				setButtonText("Add to Cart");
+			}, 2000);
+		} catch (err) {
+			console.error(err);
+		}
 	}
 
 	return (
@@ -53,7 +62,7 @@ export default function Product() {
 					Stars: {rating} <span className="material-icons">star</span>
 				</p>
 				<button className="addButton" onClick={addToCart}>
-					Add to Cart!
+					{buttonText}
 				</button>
 			</div>
 		</div>

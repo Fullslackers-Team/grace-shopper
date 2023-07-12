@@ -6,10 +6,12 @@ import { getAllProducts } from "../../api/products";
 import { addProductToOrder } from "../../api/orderItems";
 import { getOrderByCreatorId } from "../../api/orders";
 import useAuth from "../../hook/useAuth";
+import { Tooltip } from "@mui/material";
 
 export default function AllProducts() {
 	const navigate = useNavigate();
 	const [allProducts, setAllProducts] = useState([]);
+	const [cartText, setCartText] = useState("Add to cart");
 	const { user } = useAuth();
 
 	useEffect(() => {
@@ -23,7 +25,10 @@ export default function AllProducts() {
 	async function addToCart(productId) {
 		const order = await getOrderByCreatorId(user.id);
 		const newProduct = await addProductToOrder(order.data.id, productId);
-		console.log(newProduct);
+		setCartText("Added to cart!");
+		setTimeout(() => {
+			setCartText("Add to cart");
+		}, 2000);
 	}
 
 	return (
@@ -33,14 +38,17 @@ export default function AllProducts() {
 					<div className="productCard" key={products.id}>
 						<h3 className="productCard-Name">
 							<span>{products.name}</span>
-							<span className="material-icons cursor" onClick={() => addToCart(products.id)}>
-								add_shopping_cart
-							</span>
+							<Tooltip title={cartText} placement="top" arrow>
+								<span className="material-icons cursor" onClick={() => addToCart(products.id)}>
+									add_shopping_cart
+								</span>
+							</Tooltip>
 						</h3>
 						<img className="productCard-Image" style={{ width: "200px", height: "175px", borderRadius: "6px" }} src={products.img_url} />
 						<h3 className="productCard-Price">
 							<span>
-								<button className="viewtItemBtn"
+								<button
+									className="viewtItemBtn"
 									onClick={() => {
 										navigate(`/products/${products.id}`);
 									}}
