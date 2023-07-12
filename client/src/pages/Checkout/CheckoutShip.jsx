@@ -49,7 +49,7 @@ export default function CheckoutShip({ setPage }) {
 
         <br></br>
         <button
-          className="link"
+          className="link-button"
           type="submit"
           onClick={() => setPage("CheckoutPay")}
         >
