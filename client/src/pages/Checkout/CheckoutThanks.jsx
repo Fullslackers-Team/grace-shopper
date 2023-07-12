@@ -1,5 +1,6 @@
 import "./checkout.css";
 import logo from "../../assets/LOGO.png";
+import { Link } from "react-router-dom";
 
 export default function CheckoutThanks({ setPage }) {
   return (
@@ -9,6 +10,15 @@ export default function CheckoutThanks({ setPage }) {
       </h1>
 
       <img src={logo} />
+
+      <br></br>
+      <br></br>
+      <h1>Forgot something? </h1>
+      <br></br>
+
+      <Link to="/products">
+        <button className="link">Start your next order!</button>
+      </Link>
     </div>
   );
 }
