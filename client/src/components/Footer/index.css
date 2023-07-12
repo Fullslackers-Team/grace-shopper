@@ -4,9 +4,11 @@
 	list-style: none;
 	align-items: center;
 	justify-content: center;
+	position: sticky;
 }
 
 .footer {
 	display: flex;
 	justify-content: center;
+	position: sticky;
 }
