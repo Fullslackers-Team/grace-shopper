@@ -38,9 +38,9 @@ export default function Cart() {
 				>
 					<h1 style={{ marginBottom: "16px" }}>Cart</h1>
 					<span></span>
-					<p className="product-name">Product</p>
-					<p className="product-name">Price</p>
-					<p className="product-name">Quantity</p>
+					<p className="product-sum-text">Product</p>
+					<p className="product-sum-text">Price</p>
+					<p className="product-sum-text">Quantity</p>
 				</div>
 				{cart.length === 0 ? (
 					<h2 style={{ color: "#cecece", marginTop: "5rem", marginBottom: "5rem" }}>You have no items in your cart.</h2>

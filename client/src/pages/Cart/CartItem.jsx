@@ -45,10 +45,10 @@ export default function CartItem({ productId, quantity, orderId, setCart }) {
 						close
 					</span>
 				</div>
-				<img src={imgUrl} alt="Unavailable" className="product-image" />
-				<p className="product-name">{name}</p>
-				<p className="product-name">${price}</p>
-				<p className="product-name">x{quantity}</p>
+				<img src={imgUrl} alt="Unavailable" className="product-sum-image" />
+				<p className="product-sum-text">{name}</p>
+				<p className="product-sum-text">${price}</p>
+				<p className="product-sum-text">x{quantity}</p>
 			</div>
 			{/* <p className="product-price">{orderItem.price}</p> */}
 			{/* <p className="remove-buttons">
