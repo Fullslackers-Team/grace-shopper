@@ -42,6 +42,11 @@ export default function Cart() {
 					<p className="product-name">Price</p>
 					<p className="product-name">Quantity</p>
 				</div>
+				{cart.length === 0 ? (
+					<h2 style={{ color: "#cecece", marginTop: "5rem", marginBottom: "5rem" }}>You have no items in your cart.</h2>
+				) : (
+					""
+				)}
 				{cart.map((product_id) => {
 					if (addedItems.includes(product_id)) return "";
 					const duplicates = cart.filter((val) => val === product_id);
