@@ -3,6 +3,7 @@ import { logout } from "../../api/auth";
 import useAuth from "../../hook/useAuth";
 import { Link } from "react-router-dom";
 import "./index.css";
+import logo from "../../assets/LOGO.png";
 import searchBar from "../SearchBar/SearchBar";
 export default function Navbar() {
   const { setUser, loggedIn, setLoggedIn } = useAuth();
@@ -19,8 +20,9 @@ export default function Navbar() {
   return (
     <div className="navbar">
       <div className="header">
-        <h1>Paws & Claws</h1>
+        <img className="logopic" src={logo} />
       </div>
+      <h1 className="header-name">Paws & Claws</h1>
 
       <ul className="navlinks">
         {/* <searchBar /> */}
