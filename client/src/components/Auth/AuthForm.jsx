@@ -11,7 +11,7 @@ import { useCookies } from "react-cookie";
 export default function AuthForm({ loginPage }) {
 	const navigate = useNavigate();
 
-	const [cookies, setCookie] = useCookies(["guest-user-id"]);
+	const [cookies, setCookie, removeCookie] = useCookies(["guest-user-id"]);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorText, setErrorText] = useState("");
@@ -68,11 +68,14 @@ export default function AuthForm({ loginPage }) {
 				setErrorText(resp?.message || "");
 			} else {
 				const resp = await loginGuest(cookies["guest-user-id"]);
+				setErrorText(resp?.message || "");
 				if (resp.success) {
 					// Login to site
 					setAccount(resp.user);
+				} else {
+					removeCookie("guest-user-id", { path: "/" });
+					setErrorText("Old guest account invalid and removed, please continue as guest again");
 				}
-				setErrorText(resp?.message || "");
 			}
 		} catch (err) {
 			console.error(err);
