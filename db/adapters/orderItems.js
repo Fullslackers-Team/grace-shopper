@@ -25,9 +25,7 @@ async function addItemsToOrder(order_id, product_ids) {
 		for (let i = 2; i < product_ids.length + 1; i++) {
 			queryValues.push(`($1, $${i})`);
 		}
-		queryValues[queryValues.length - 1] = `${
-			queryValues[queryValues.length - 1]
-		};`;
+		queryValues[queryValues.length - 1] = `${queryValues[queryValues.length - 1]};`;
 		queryValues = queryValues.join(", ");
 		console.log(`
 		INSERT INTO order_items(order_id, product_id)
@@ -72,9 +70,11 @@ async function removeItemFromOrder(order_id, product_id) {
 		const {
 			rows: [removedItem],
 		} = await client.query(
+			// DELETE FROM order_items
+			// WHERE order_id = $1 AND product_id = $2;
 			`
-      DELETE FROM order_items
-      WHERE order_id = $1 AND product_id = $2;
+	  DELETE FROM order_items 
+	  WHERE id IN (SELECT id FROM order_items WHERE order_id = $1 AND product_id = $2 LIMIT 1);
       `,
 			[order_id, product_id]
 		);

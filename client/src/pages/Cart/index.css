@@ -3,13 +3,17 @@
 	flex-direction: column;
 	align-items: center;
 	width: 100vw;
+	min-height: 75vh;
 	color: white;
 }
 .cart-cont {
 	background-color: #2a2a2a;
+	min-width: none;
+	width: 800px;
 	max-width: 1000px;
 	border-radius: 6px;
 	box-shadow: 0px 5px 12px -3px black;
+	padding: 1rem;
 	margin: 2rem;
 }
 .link {
@@ -24,6 +28,7 @@
 	border-radius: 6px;
 	margin: 1rem;
 	padding: 1rem;
+	text-align: left;
 	min-width: fit-content;
 	min-height: fit-content;
 }
@@ -32,20 +37,22 @@
 	grid-template-columns: 0.25fr 0.25fr 1fr 0.25fr 0.25fr;
 	gap: 3rem;
 }
-.product-image {
+.product-sum-image {
 	max-width: 70px;
 }
 .product-close {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+.product-close-icon {
 	transition: all 0.2s ease;
 }
-.product-close:hover {
-	color: blueviolet;
+.product-close-icon:hover {
+	color: #cc00cc;
 	transform: translateY(-3px);
 }
-.product-name {
+.product-sum-text {
 	font-size: 20px;
 }
 
