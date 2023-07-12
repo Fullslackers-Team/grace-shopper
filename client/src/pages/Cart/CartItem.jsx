@@ -30,8 +30,14 @@ export default function CartItem({ productId }) {
 
 	return (
 		<div className="product-card">
-			<h1 className="product-name">{name}</h1>
-			<p>{description}</p>
+			<div className="product-info">
+				<span className="material-icons cursor" onClick={() => {}}>
+					close
+				</span>
+				<p className="product-name">{name}</p>
+				<p className="product-name">${price}</p>
+				<p className="product-name">{"x1"}</p>
+			</div>
 			{/* <p className="product-price">{orderItem.price}</p> */}
 			{/* <p className="remove-buttons">
 								<button className="link" onClick={removeProductFromOrder}>
