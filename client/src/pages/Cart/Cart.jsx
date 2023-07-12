@@ -25,16 +25,18 @@ export default function Cart() {
 	fetchOrderItems();
 
 	return (
-		<div className="cart-container">
-			{cart.map((product_id) => {
-				return <CartItem key={product_id} productId={product_id} />;
-			})}
+		<div className="cart-page">
+			<div className="cart-cont">
+				{cart.map((product_id) => {
+					return <CartItem key={product_id} productId={product_id} />;
+				})}
 
-			<p className="checkout-button">
-				<Link to="/checkout">
-					<button className="link"> Continue to checkout</button>
-				</Link>
-			</p>
+				<p className="checkout-button">
+					<Link to="/checkout">
+						<button className="link"> Continue to checkout</button>
+					</Link>
+				</p>
+			</div>
 		</div>
 	);
 }

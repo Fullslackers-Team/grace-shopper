@@ -3,13 +3,13 @@ import { useEffect, useState } from "react";
 import { getProduct } from "../../api/products";
 import { addProductToOrder } from "../../api/orderItems";
 import { getOrderByCreatorId } from "../../api/orders";
-import useAuth from "../../hook/useAuth"
+import useAuth from "../../hook/useAuth";
 import { useParams } from "react-router-dom";
 import "./index.css";
 
 export default function Product() {
 	const { id } = useParams();
-	const {user} = useAuth();
+	const { user } = useAuth();
 
 	const [name, setName] = useState("");
 	const [productId, setProductId] = useState("");
@@ -35,9 +35,9 @@ export default function Product() {
 
 	async function addToCart() {
 		const order = await getOrderByCreatorId(user.id);
-		if (!order) return
-		const newProduct = await addProductToOrder(order.data.id,productId);
-	};
+		if (!order) return;
+		const newProduct = await addProductToOrder(order.data.id, productId);
+	}
 
 	return (
 		<div className="product-page">
@@ -49,8 +49,12 @@ export default function Product() {
 				<p>{description}</p>
 				<p>Price: ${price}</p>
 				<p>Stock: {stock}</p>
-				<p>Stars: {rating} <span className="material-icons">star</span></p>
-				<button className="addButton" onClick={addToCart}>Add to Cart!</button>
+				<p>
+					Stars: {rating} <span className="material-icons">star</span>
+				</p>
+				<button className="addButton" onClick={addToCart}>
+					Add to Cart!
+				</button>
 			</div>
 		</div>
 	);
