@@ -1,3 +1,7 @@
-.cursor {
-    cursor: pointer;
+.cursor:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 4px 4px purple;
+	border-radius: 25%;
+	background-color: purple;
+	overflow: auto;
 }
