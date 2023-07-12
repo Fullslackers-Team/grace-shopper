@@ -1,33 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getAllProducts } from "../../api/products";
 
-export default function searchBar() {
+export default function SearchBar() {
 	const [searchInput, setSearchInput] = useState("");
-	const products = [
-		{
-			name: "chew toy",
-			description: "made of rubber, squeeks",
-			price: "5",
-			stock: 50,
-		},
-		{
-			name: "Pet Amor",
-			description: "flea and ticket shampoo",
-			price: "7.99",
-			stock: 10,
-		},
-		{
-			name: "Science Diet",
-			description: "dry kibble",
-			price: "65",
-			stock: 5,
-		},
-		{
-			name: "Kong Ultra Strong",
-			description: "double door wired crate",
-			price: "100",
-			stock: 10,
-		},
-	];
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		async function fetchSearchProducts() {
+			const response = await getAllProducts();
+			setProducts(response);
+		}
+		fetchSearchProducts();
+	}, []);
 
 	const handleChange = (e) => {
 		e.preventDefault();
@@ -48,21 +32,6 @@ export default function searchBar() {
 				onChange={handleChange}
 				value={searchInput}
 			/>
-
-			<table>
-				<tr>
-					<th>Product</th>
-				</tr>
-
-				{products.map((product) => {
-					<div>
-						<tr>
-							<td>{product.name}</td>
-							<td>{product.description}</td>
-						</tr>
-					</div>;
-				})}
-			</table>
 		</div>
 	);
 }
