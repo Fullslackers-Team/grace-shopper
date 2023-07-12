@@ -16,31 +16,33 @@ export default function CheckoutShip({ setPage }) {
     <div className="checkout-forms">
       <form className="checkout-form-ship" onSubmit={onClick}>
         <label>Full Name:</label>
-        <textarea
+        <br></br>
+        <input
           value={fullname}
           onChange={(event) => setFullName(event.target.value)}
         />
-
+        <br></br>
         <label>Street Address:</label>
-        <textarea
+        <br></br>
+        <input
           value={streetaddress}
           onChange={(event) => setStreetAddress(event.target.value)}
         />
-
+        <br></br>
         <label>City:</label>
-        <textarea
-          value={city}
-          onChange={(event) => setCity(event.target.value)}
-        />
-
+        <br></br>
+        <input value={city} onChange={(event) => setCity(event.target.value)} />
+        <br></br>
         <label>State:</label>
-        <textarea
+        <br></br>
+        <input
           value={state}
           onChange={(event) => setState(event.target.value)}
         />
-
+        <br></br>
         <label>Zip Code:</label>
-        <textarea
+        <br></br>
+        <input
           value={zipcode}
           onChange={(event) => setZipCode(event.target.value)}
         />
