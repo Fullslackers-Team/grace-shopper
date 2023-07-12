@@ -1,20 +1,26 @@
 .product-page {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: 1fr 2fr;
+	padding: 30px;
 }
 
 .product-info {
 	text-align: left;
+	width: 950px;
 }
 
 .product-img {
 	width: 400px;
 	height: 500px;
 	border-radius: 6px;
+	box-shadow: 0 4px 10px gray;
 }
 
 .product-name {
 	font-size: 30pt;
+	background-color: #4a4a4a;
+	padding: 10px;
+	margin: 0;
 }
 
 .material-icons {

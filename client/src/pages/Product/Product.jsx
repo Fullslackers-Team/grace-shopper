@@ -46,7 +46,7 @@ export default function Product() {
 			</div>
 			<div className="product-info">
 				<h1 className="product-name">{name}</h1>
-				<p>{description}</p>
+				<p className="product-decription">{description}</p>
 				<p>Price: ${price}</p>
 				<p>Stock: {stock}</p>
 				<p>
