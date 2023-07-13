@@ -90,13 +90,25 @@ export default function AuthForm({ loginPage }) {
 	return (
 		<div className="auth-form">
 			<h1>{loginPage ? "Login" : "Register"}</h1>
-			<TextField label="Username" variant="filled" value={username} onChange={(e) => setUsername(e.target.value)} />
+			<TextField
+				label="Username"
+				color="secondary"
+				style={{ textAlign: "left" }}
+				variant="filled"
+				value={username}
+				onChange={(e) => setUsername(e.target.value)}
+			/>
 			<FormControl variant="filled">
-				<InputLabel htmlFor="filled-adornment-password">Password</InputLabel>
+				<InputLabel htmlFor="filled-adornment-password" color="secondary">
+					Password
+				</InputLabel>
 				<FilledInput
 					id="filled-adornment-password"
+					color="secondary"
 					type={showPassword ? "text" : "password"}
 					value={password}
+					style={{ textAlign: "left" }}
+					r
 					onChange={(e) => setPassword(e.target.value)}
 					endAdornment={
 						<InputAdornment position="end">
@@ -116,6 +128,7 @@ export default function AuthForm({ loginPage }) {
 				<Button
 					variant="contained"
 					sx={{ width: "100%", mt: "1rem" }}
+					color="secondary"
 					onClick={() => {
 						if (loginPage) {
 							handleLogin();
@@ -129,6 +142,7 @@ export default function AuthForm({ loginPage }) {
 				<Button
 					variant="outlined"
 					sx={{ width: "100%", mt: "1rem" }}
+					color="secondary"
 					onClick={() => {
 						handleGuest();
 					}}

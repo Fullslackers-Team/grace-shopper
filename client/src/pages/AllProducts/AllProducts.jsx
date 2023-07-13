@@ -7,10 +7,12 @@ import { addProductToOrder } from "../../api/orderItems";
 import { getOrderByCreatorId } from "../../api/orders";
 import useAuth from "../../hook/useAuth";
 import { Tooltip } from "@mui/material";
+import ProductCard from "./ProductCard";
 
-export default function AllProducts() {
+export default function AllProducts({ searchInput }) {
 	const navigate = useNavigate();
 	const [allProducts, setAllProducts] = useState([]);
+	const [filteredProducts, setFilteredProducts] = useState([]);
 	const [cartText, setCartText] = useState("Add to cart");
 	const { user } = useAuth();
 
@@ -21,6 +23,11 @@ export default function AllProducts() {
 		}
 		getProducts();
 	}, []);
+
+	useEffect(() => {
+		const newFilteredProducts = allProducts.filter((product) => product.name.toLowerCase().includes(searchInput.toLowerCase()));
+		setFilteredProducts(newFilteredProducts);
+	}, [searchInput]);
 
 	async function addToCart(productId) {
 		const order = await getOrderByCreatorId(user.id);
@@ -33,34 +40,19 @@ export default function AllProducts() {
 
 	return (
 		<div className="allProductsPage">
-			{allProducts.map((products) => {
-				return (
-					<div className="productCard" key={products.id}>
-						<h3 className="productCard-Name">
-							<span>{products.name}</span>
-							<Tooltip title={cartText} placement="top" arrow>
-								<span className="material-icons cursor" onClick={() => addToCart(products.id)}>
-									add_shopping_cart
-								</span>
-							</Tooltip>
-						</h3>
-						<img className="productCard-Image" style={{ width: "200px", height: "175px", borderRadius: "6px" }} src={products.img_url} />
-						<h3 className="productCard-Price">
-							<span>
-								<button
-									className="viewtItemBtn"
-									onClick={() => {
-										navigate(`/products/${products.id}`);
-									}}
-								>
-									View Item
-								</button>
-							</span>
-							<span>Price: ${products.price}</span>
-						</h3>
-					</div>
-				);
-			})}
+			{searchInput && searchInput.length ? (
+				filteredProducts.length ? (
+					filteredProducts.map((product) => {
+						return <ProductCard key={product.id} product={product} cartText={cartText} />;
+					})
+				) : (
+					<h1>No products match your search.</h1>
+				)
+			) : (
+				allProducts.map((product) => {
+					return <ProductCard key={product.id} product={product} cartText={cartText} />;
+				})
+			)}
 		</div>
 	);
 }
