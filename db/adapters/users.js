@@ -27,7 +27,6 @@ async function createUser(guest, username, password) {
       `,
 			[user.id, "cart"]
 		);
-		console.log(order);
 		return user;
 	} catch (error) {
 		throw error;
