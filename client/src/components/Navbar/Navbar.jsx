@@ -6,7 +6,7 @@ import "./index.css";
 import logo from "../../assets/LOGO.png";
 import SearchBar from "../SearchBar/SearchBar";
 
-export default function Navbar() {
+export default function Navbar({ searchInput, setSearchInput }) {
 	const { setUser, loggedIn, setLoggedIn } = useAuth();
 
 	async function handleLogout() {
@@ -26,7 +26,7 @@ export default function Navbar() {
 			<h1 className="header-name">Paws & Claws</h1>
 
 			<ul className="navlinks">
-				<SearchBar />
+				<SearchBar setSearchInput={setSearchInput} />
 				<li>
 					<Link to="/">
 						<button className="link">Home</button>

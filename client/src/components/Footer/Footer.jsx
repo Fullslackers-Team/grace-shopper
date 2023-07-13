@@ -11,7 +11,7 @@ export default function Footer() {
 				<Link to="/">
 					<button className="link">Social Media</button>
 				</Link> */}
-				<Link to="https://github.com/Fullslackers-Team/grace-shopper">
+				<Link to="https://github.com/Fullslackers-Team/grace-shopper" target="_blank">
 					<button className="link">GitHub Repo</button>
 				</Link>
 			</ul>

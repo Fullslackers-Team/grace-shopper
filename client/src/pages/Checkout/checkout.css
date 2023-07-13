@@ -17,7 +17,6 @@ input {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
-	text-align: center;
 }
 
 button {
@@ -27,9 +26,12 @@ button {
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 20px;
-
 }
 
 img {
 	max-width: 500px;
+}
+
+.checkout-input {
+	text-align: center;
 }

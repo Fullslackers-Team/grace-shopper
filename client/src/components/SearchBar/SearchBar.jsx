@@ -1,37 +1,19 @@
-import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../../api/products";
+import React from "react";
+import "./index.css";
+import { useLocation, useNavigate } from "react-router-dom";
 
-export default function SearchBar() {
-	const [searchInput, setSearchInput] = useState("");
-	const [products, setProducts] = useState([]);
-
-	useEffect(() => {
-		async function fetchSearchProducts() {
-			const response = await getAllProducts();
-			setProducts(response);
-		}
-		fetchSearchProducts();
-	}, []);
+export default function SearchBar({ searchInput, setSearchInput }) {
+	const location = useLocation();
+	const navigate = useNavigate();
 
 	const handleChange = (e) => {
-		e.preventDefault();
+		if (location.pathname !== "products") navigate("/products");
 		setSearchInput(e.target.value);
 	};
 
-	if (searchInput.length > 0) {
-		products.filter((product) => {
-			return product.name.match(searchInput);
-		});
-	}
-
 	return (
 		<div>
-			<input
-				type="search"
-				placeholder="Search here"
-				onChange={handleChange}
-				value={searchInput}
-			/>
+			<input className="search-input" type="search" placeholder="Search here" onChange={handleChange} value={searchInput} />
 		</div>
 	);
 }
