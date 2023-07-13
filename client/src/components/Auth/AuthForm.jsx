@@ -108,7 +108,7 @@ export default function AuthForm({ loginPage }) {
 					type={showPassword ? "text" : "password"}
 					value={password}
 					style={{ textAlign: "left" }}
-					r
+					required={true}
 					onChange={(e) => setPassword(e.target.value)}
 					endAdornment={
 						<InputAdornment position="end">

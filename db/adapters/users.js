@@ -5,11 +5,7 @@ const saltRounds = 10;
 
 async function createUser(guest, username, password) {
 	try {
-		const hashedPassword = bcrypt.hashSync(
-			guest ? "123" : password,
-			saltRounds
-		);
-
+		const hashedPassword = bcrypt.hashSync(guest ? "123" : password, saltRounds);
 		const {
 			rows: [user],
 		} = await client.query(
@@ -20,6 +16,18 @@ async function createUser(guest, username, password) {
       `,
 			guest ? ["guest", null, "guest"] : [username, hashedPassword, "user"]
 		);
+
+		const {
+			rows: [order],
+		} = await client.query(
+			`
+        INSERT INTO orders(creator_id, status) 
+        VALUES($1, $2) 
+        RETURNING *;
+      `,
+			[user.id, "cart"]
+		);
+		console.log(order);
 		return user;
 	} catch (error) {
 		throw error;
