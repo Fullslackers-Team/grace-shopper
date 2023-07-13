@@ -1,25 +1,24 @@
-.topSellers {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    margin: 75px 0px 75px;
+.topSellersContent {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  border: white 2px solid;
+  overflow: auto;
+  margin: 20px;
+  padding: 20px;
+  gap: 4rem;
+  border-radius: 10px;
+  align-items: center;
 }
 
-/* .topSellersImage {
-    display: flex;
-} */
-
 .topSellersList {
-    text-align: left;
-    margin-top: 0;
+  text-align: left;
+  margin-top: 0;
 }
 
 .productName {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .productInfo {
-    margin-top: 0;
+  margin-top: 0;
 }

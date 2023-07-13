@@ -17,7 +17,7 @@ export default function CheckoutThanks({ setPage }) {
       <br></br>
 
       <Link to="/products">
-        <button className="link">Start your next order!</button>
+        <button className="link checkout-button">Start your next order!</button>
       </Link>
     </div>
   );
