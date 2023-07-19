@@ -46,6 +46,8 @@ async function authUser(username, password) {
 			[username]
 		);
 
+		if (user === undefined) return null;
+
 		const res = bcrypt.compareSync(password, user.password);
 
 		if (res) {
